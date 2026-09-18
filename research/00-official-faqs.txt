@@ -1,0 +1,265 @@
+FAQs — CCTV Integration Hackathon | Gujarat Police Innovation Challenge 2026 
+ Registration and Submission closes in
+ Deadline: 28 September 2026 
+ --
+ Days
+ --
+ Hrs
+ --
+ Min
+ --
+ Sec
+ Government of Gujarat 
+ Home Department 
+ About 
+ Prize Money 
+ Resources 
+ Problem Statements & Step by Step Guide 
+ Schedule & Venue 
+ FAQs 
+ Contact Us 
+ State Crime 
+ Records Bureau 
+ Sign In 
+ Register 
+ FAQs
+ Everything you need to know about the CCTV Integration Hackathon — 50 questions answered.
+ General & Objective
+ 1 
+ What is the core objective of this hackathon?
+ To design a secure, scalable, interoperable, and cost-effective solution that integrates CCTV cameras from 26 Government Departments — currently operating as independent, fragmented systems — into a unified video management and analytics platform.
+ 2 
+ What is the official hackathon website?
+ https://sentinel.gujarat.gov.in — the single point of access for registration, resources, datasets, announcements, and submissions.
+ 3 
+ How many government departments currently operate independent CCTV systems?
+ 26 different Government Departments, each running its own standalone camera ecosystem.
+ 4 
+ What kind of cameras are currently deployed — analog, IP, or both?
+ Both. Departments use a mix of analog and IP-based cameras deployed across geographically dispersed locations, including border districts and areas like Valsad, Dahod, Somnath, Jamnagar, and Dwarka.
+ 5 
+ Do all departments store footage the same way?
+ No. Some departments use cloud-based storage, others rely on local infrastructure. Retention periods also vary — some keep footage for 7 days, others for 15 days or more.
+ 6 
+ Can you give examples of how different departments use their cameras?
+ Yes: Home Department: public-domain traffic monitoring, law & order, crime detection. Food & Civil Supplies Department: godowns, PDS shops, related facilities. RTO: offices, testing tracks, checkpoints.
+ 7 
+ Should the solution also integrate private CCTV cameras (societies, malls, etc.)?
+ Yes, wherever feasible and permitted — the solution should support viewing capabilities for public-facing CCTV cameras installed by societies, malls, commercial establishments, and other private entities, in addition to government cameras.
+ 8 
+ Which government databases should the system integrate with for real-time alerts?
+ VAHAN, SARTHI, eGujCop (Gujarat Police's CCTNS platform), AFIS, and NAFIS — enabling automated real-time alerts for arrested persons, stolen vehicles, wanted criminals, missing persons, unidentified bodies, and fingerprint matches.
+ 9 
+ What are the key technical challenges the solution must address?
+ Heterogeneous infrastructure (different vendors, VMS platforms, AMC periods, formats, protocols); Geographical dispersion (camera sites up to ~1,000 km apart); Unified analytics and event handling across onboarded cameras; Scalability to onboard new cameras/departments without major redesign.
+ 10 
+ What overall architecture principles should the solution follow?
+ Open, modular, scalable, secure, standards-based, and vendor-neutral — avoiding vendor lock-in and enabling future integration, replacement, and upgrades via documented APIs, open protocols, and adapter-based frameworks.
+ Integration Models
+ 11 
+ How many integration models does the framework define?
+ Four reference models (Model 1–4), plus the option of a hybrid or fully customised architecture.
+ 12 
+ Is any model mandatory?
+ Yes — Model 1 (Centralised CCTV Registry & GIS Foundation) is compulsory for all submissions and must be combined with one or more of the other models.
+ 13 
+ What is Model 1?
+ A centralised CCTV registry and GIS-based mapping platform for onboarding and maintaining camera metadata (location, department, type, ownership, connectivity, storage). It creates a unified inventory/visibility layer for planning and gap analysis.
+ 14 
+ Does Model 1 involve centralised live video streaming or recording?
+ No. Model 1 is metadata/registry-only and must be paired with another model to enable actual feed integration, viewing, or analytics.
+ 15 
+ What are Model 1's key functional features?
+ Bulk/manual/API-based camera onboarding, interactive GIS map with layered filters, camera health monitoring, gap-analysis reports, and role-based search/audit trails.
+ 16 
+ What is Model 2?
+ Unified Viewing and Selective Analytics — a platform that connects directly to each departmental CCTV/VMS system (via RTSP, ONVIF, vendor SDKs, or APIs) and aggregates feeds into a single interface, without disturbing existing infrastructure.
+ 17 
+ Does Model 2 use a middleware layer between the platform and departmental systems?
+ No — Model 2 requires direct integration with each departmental system, without an intermediate middleware/federation layer.
+ 18 
+ What is Model 3?
+ VMS Federation and Middleware Layer — a middleware layer that integrates multiple departmental VMS platforms via APIs/SDKs/metadata exchange, enabling interoperability and centralized event correlation while departments retain their own infrastructure.
+ 19 
+ How is Model 3 different from Model 2?
+ Model 3 does not connect directly to each departmental system. Instead, a middleware/federation layer sits in between, communicating with multiple VMS platforms and exposing a single unified interface downstream.
+ 20 
+ What is Model 4?
+ Central VMS and AI Platform — a single consolidated Central VMS for centralized monitoring, recording, storage, playback, and advanced AI-based analytics across departments, built for statewide scale.
+ 21 
+ What infrastructure does Model 4 require?
+ Scalable storage, high-bandwidth connectivity, centralized compute resources, redundancy mechanisms, cybersecurity controls, and an architecture capable of large-scale video ingestion and real-time processing.
+ 22 
+ What analytics capabilities does Model 4 require?
+ ANPR, face recognition, crowd/vehicle counting, anomaly detection, statewide vehicle tracking and route reconstruction, plus integration readiness with VAHAN, SARTHI, eGujCop, AFIS, and NAFIS.
+ 23 
+ Can participants submit a hybrid or fully custom architecture instead of a single model?
+ Yes — participants may combine elements from two or more models, or submit a fully innovative/customised architecture, as long as it addresses the required functional, interoperability, security, scalability, and analytics criteria.
+ 24 
+ What design dimensions must every proposed solution cover?
+ Overall architecture, integration strategy for heterogeneous cameras/VMS, AI/video analytics approach (including ANPR and cross-camera tracking), cybersecurity/privacy/RBAC/audit controls, deployment architecture (central/regional/edge), infrastructure sizing, cost-benefit analysis, department-wise technical requirements, and a scalability roadmap.
+ 25 
+ Are suggested technology stacks fixed, or can teams choose their own?
+ The report provides suggested stacks per model (e.g., React, Node.js/Python, PostgreSQL+PostGIS, Kafka, Kubernetes, S3-compatible storage) as references — teams are not restricted to only these.
+ Technical Evaluation / Test Case
+ 26 
+ What is the live technical test case during the hackathon?
+ After registration, participants access ~50 geographically distributed live-simulated camera feeds from different departments. Teams must onboard these cameras onto their integrated platform and enable centralized monitoring and analytics.
+ 27 
+ What is the vehicle-tracking challenge?
+ A designated vehicle number is provided to participants on the hackathon day, and the system must track that vehicle as it moves through different camera locations at different times.
+ 28 
+ What output is expected from the test case?
+ The complete route traversed by the designated vehicle, a timestamped and location-wise movement history, and evidence of interoperability, onboarding efficiency, analytics capability, and end-to-end performance.
+ Submission Requirements
+ 29 
+ What documents must be submitted?
+ 1. Solution Presentation (PPT/PDF) — model chosen with justification, solution overview and key features. 2. Technical Proposal / High-Level Design (HLD) — architecture diagrams, integration approach, analytics approach, scalability plan, and technical info needed from departments.
+ 30 
+ What specifically must the HLD document cover?
+ Overall solution architecture with diagrams; approach for integrating heterogeneous cameras/VMS (IP, analog, multi-vendor, varied protocols); handling geographically dispersed locations (bandwidth, connectivity, edge vs. centralized processing); video analytics approach (ANPR, cross-camera tracking); scalability approach for ~80,000 cameras; and department-level technical details needed for integration feasibility.
+ 31 
+ What demonstration videos are required?
+ 1. Demo on the participant's own feed (2–3 min screen recording) showing onboarding, live/recorded viewing, and vehicle detection/ANPR. 2. Live demonstration on the government-provided CCTV feed showing onboarding, viewing, and analytics output (ANPR, vehicle/person/intrusion/object detection).
+ 32 
+ Are mock-ups or animated concept videos accepted as demonstrations?
+ No — the report explicitly states demonstrations must show actual working software; mock-ups, animations, and concept videos will not be accepted.
+ 33 
+ What must accompany the government-feed demonstration?
+ A screen-recorded video along with an output report showing detected vehicles or number plates with corresponding timestamps.
+ 34 
+ How should the final submission be shared?
+ Via an unlisted YouTube link, or a Google Drive/OneDrive link with viewer access enabled. Optionally, a hosted platform URL with test credentials and/or a GitHub/GitLab repository link with source code.
+ Scalability Requirements
+ 35 
+ What must the statewide scalability plan (~80,000 cameras) include?
+ Central, regional, and edge-compute requirements; GPU/accelerator capacity for analytics; network-bandwidth planning and low-bandwidth strategies; hot/warm/cold storage tiers based on retention; load balancing, horizontal scaling, monitoring/logging/health checks; high availability, backup, and disaster recovery; and a phased statewide rollout plan.
+ Evaluation & Bonus Consideration
+ 36 
+ What are the official evaluation areas?
+ 1. Successful Test Case (onboarding + analytics on government feed). 2. Solution Presentation (clarity, model justification). 3. Solution Architecture (technical soundness, HLD quality). 4. Working Platform (maturity of demonstrated software). 5. Video Analytics Output (quality of ANPR/detection/reports). 6. Scalability and PoC Readiness (~80,000-camera readiness). 7. Submission Completeness.
+ 37 
+ Are bonus points available, and do they outweigh mandatory requirements?
+ Bonus consideration may be given for meaningful additional capabilities, but bonus features will not compensate for non-compliance with mandatory requirements.
+ 38 
+ What kind of extra features earn bonus consideration?
+ Innovative hybrid architectures, advanced cross-camera tracking, additional reliable analytics, edge processing, bandwidth optimisation, enhanced cybersecurity/auditability, operational dashboards, automated alerts, health monitoring, and integration-ready APIs.
+ Dataset & Streaming Infrastructure
+ 39 
+ What live video dataset will be provided for the hackathon?
+ Approximately 12 hours of CCTV footage from each of the 30+ cameras deployed across five Government departments: Health, Police, GSRTC, Panchayat, and Municipal Corporation.
+ 40 
+ How are the recorded feeds turned into "live" streams for the hackathon?
+ A dedicated Python-based streaming middleware ingests the recorded footage, synchronizes it on a common timeline, and serves it as simulated live video via a dedicated streaming endpoint (URL) for each camera.
+ 41 
+ Why use simulated streams instead of connecting directly to live production CCTV?
+ To give participants a realistic integration experience while protecting the security of production CCTV infrastructure, and to ensure every team is tested against a consistent, repeatable dataset under identical, fair conditions.
+ Knowledge Partners
+ 42 
+ Who are the official Knowledge Partners for this hackathon?
+ National Forensic Sciences University (NFSU) and Dhirubhai Ambani Institute of Information and Communication Technology (DA-IICT).
+ 43 
+ What role do the Knowledge Partners play?
+ They provide technical expertise, academic guidance, mentoring, and support in evaluating submissions — contributing domain knowledge in AI, Computer Vision, Video Analytics, Cybersecurity, Digital Forensics, and ICT, and reviewing architecture, innovation, scalability, and feasibility.
+ Eligibility & Participant Categories
+ 44 
+ Who is eligible under Category 1 (Academic/Research/Startup)?
+ Students, graduates, postgraduates, doctoral scholars, academic or research teams, and DPIIT-Recognized startups.
+ 45 
+ What's required to register as a DPIIT-recognized startup?
+ A valid DPIIT Startup Recognition Certificate (recognized by the Department for Promotion of Industry and Internal Trade under Startup India criteria) must be provided at registration or verification.
+ 46 
+ Who is eligible under Category 2 (Industry/Enterprise)?
+ Companies, industry partners, system integrators, technology solution providers, LLPs, partnerships, and other established enterprises — essentially any business entity not eligible as a DPIIT-recognized startup under Category 1.
+ 47 
+ What can participants do on the official hackathon website?
+ Register for the hackathon; access the official Problem Statement and Solution Framework, datasets, APIs, and reference materials; receive announcements, schedules, and updates; submit required documents/videos/code; and view evaluation-related notifications.
+ Format, Phases & Prizes
+ 48 
+ What is the overall hackathon format?
+ Phase 1 – Sandbox Round: teams integrate their solution with the organizer's test feed, competing within their category (Category 1 or Category 2). The six highest-ranked participants across both categories qualify for Phase 2. Phase 2 – Production Round (Grand Finale): the six qualifiers demonstrate their solutions using live camera feeds in a production-scale environment.
+ 49 
+ Does the Phase 1 prize money have any purpose beyond being a reward?
+ Yes — Phase 1 prize money also serves as a grant toward building the final Phase 2 solution.
+ 50 
+ What is the total prize pool, and how is it broken down?
+ Total: ₹51,00,000. Phase 1 – Sandbox Round (₹18,00,000): Category 1: 1st ₹4,00,000 · 2nd ₹2,00,000 · 3rd ₹1,00,000. Category 2: 1st ₹5,00,000 · 2nd ₹3,00,000 · 3rd ₹2,00,000. Plus 4 Consolation Awards of ₹25,000 each (₹1,00,000 across both categories). Phase 2 – Production Round / Grand Finale (₹31,00,000): 1st ₹16,00,000 · 2nd ₹8,00,000 · 3rd ₹7,00,000. Additional Awards (₹2,00,000): Consolation Award (₹50,000 each for the 3 finalists outside top 3 = ₹1,50,000). Special Jury Award (₹50,000) for standout innovation, technical excellence, originality, or impact.
+ No FAQs found for your search. Try different keywords.
+ Clear Search
+ Still have questions?
+ Our helpdesk team is available Mon–Sat, 10:00 AM – 6:00 PM
+ Register
+ View Problems
+ Gujarat Police Innovation Hackathon 2026 — A flagship initiative to
+ harness technology for
+ public
+ safety and law enforcement excellence across Gujarat.
+ i-Hub Gujarat 
+ Quick Links
+ Home 
+ Problem
+ Statements 
+ Register 
+ Sign In 
+ FAQs 
+ Important Dates
+ Registration Open:
+ 4 August 2026 
+ Last Date:
+ 28 September 2026 
+ Shortlisting:
+ 28 September 2026 
+ Event:
+ 12–13 October 2026 
+ Results:
+ 13 October 2026 
+ Contact
+ State Crime Record Bureau (SCRB), Next to Police Bhawan Sector - 18 Gandhinagar, Gujarat - 382009 
+ +91 95370 89982 
+ sentinel.hackathon@gujarat.gov.in 
+ https://gujhome.gujarat.gov.in 
+ State Crime Record
+ Bureau
+ © 2026 Gujarat Police Innovation Hackathon. All Rights Reserved. | Government of Gujarat 
+ A11Y 
+ Accessibility
+ FONT SIZE
+ A+ 
+ A- 
+ DISPLAY
+ High Contrast
+ Dyslexia Font
+ AUDIO
+ Listen to Page 
+ Reset All
+ AI 
+ AI Hackathon Assistant
+ 🟢 Online — Ask me anything
+ 👋 Hello! I'm your Gujarat Police Hackathon Assistant .
+ How can I help you today?
+ Which problem should I choose? 
+ Explain problem in simple language 
+ How to register? 
+ Important dates 
+ Prize details 
+ Show me FAQs 
+ Technology stack 
+ Registration fee 
+ GUJARAT POLICE
+ SENTINEL
+ ONE LAST TIME 
+ By Popular Demand — Hackathon Date Extended!
+ In response to the continued interest and requests from participants, we are pleased to extend the solution submission deadline to 28 September 2026 , providing teams with additional time to refine their solutions and present their best work.
+ HACKATHON DATES 
+ 12 – 13 October 2026 
+ EXTENDED 
+ LAST DATE FOR SUBMISSION 
+ 28 September 2026 
+ NEW DEADLINE 
+ More time. More innovation. One bigger opportunity! 
+ Don’t miss your chance to participate and showcase your solution. 
+ Participate Now 
+ Continue to Website
+ GUJARAT POLICE | SAFER GUJARAT, STRONGER TOMORROW.
+ ANNOUNCEMENT 
+ Date Extended: 12–13 Oct

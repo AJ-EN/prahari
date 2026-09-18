@@ -1,0 +1,249 @@
+Home | Gujarat Police Innovation Challenge 2026 
+ Registration and Submission closes in
+ Deadline: 28 September 2026 
+ --
+ Days
+ --
+ Hrs
+ --
+ Min
+ --
+ Sec
+ Government of Gujarat 
+ Home Department 
+ About 
+ Prize Money 
+ Resources 
+ Problem Statements & Step by Step Guide 
+ Schedule & Venue 
+ FAQs 
+ Contact Us 
+ State Crime 
+ Records Bureau 
+ Sign In 
+ Register 
+ Gujarat Police Hackathon Innovation Challenge 2026
+ Protect What Matters. 
+ Not a simulation. 
+ Not a proof of concept. 
+ Design solutions built for real-world deployment.
+ Collaborate with Gujarat
+ Police to build intelligent CCTV solutions for the future of policing.
+ Integrate diverse CCTV systems into a unified platform.
+ Cross-reference live video feeds with Government databases.
+ Use AI to identify persons, vehicles, and events of interest.
+ Generate real-time alerts that support faster and smarter law enforcement.
+ Integrate CCTV Systems 
+ Correlate Live Video with Government Databases 
+ Generate AI-Powered Intelligence 
+ Deliver Real-Time Alerts 
+ Register Now
+ View Problem Statement
+ Total
+ Prize Pool 
+ ₹ 51,00,000 
+ Scroll 
+ Our Partners
+ Knowledge Partner
+ Dhirubhai Ambani University
+ Dhirubhai Ambani University
+ Knowledge Partner
+ NFSU
+ National Forensic Sciences University
+ Tech Partner
+ i-Hub Gujarat
+ Gujarat Govt. Enterprise
+ About the Hackathon
+ An
+ initiative by Gujarat Police for India's builders.
+ This is
+ more than a hackathon—it's an opportunity to shape the future of intelligent policing.
+ Join Gujarat Police in building next-generation AI-powered CCTV integration and video analytics
+ solutions that integrate diverse CCTV systems, correlate live video feeds with Government
+ databases, and generate real-time intelligence and automated alerts for law enforcement.
+ Collaborate, innovate, and create technologies with the potential to transform policing at
+ scale.
+ Why Participate
+ A national
+ stage for people building the future of public safety.
+ Government Problem
+ Solve a real
+ challenge issued by Gujarat Police, not a simulated one.
+ Real CCTV Dataset
+ Work with
+ genuine
+ footage from live Government CCTV infrastructure.
+ National Recognition
+ Get noticed on
+ a
+ Government-backed, statewide innovation platform.
+ Production Opportunity
+ Top solutions
+ move
+ toward real deployment, not just a demo day.
+ CCTV Integration Stack
+ Build scalable
+ AI
+ architectures for statewide public-safety operations.
+ Public–Safety Impact
+ Build AI that
+ can
+ genuinely make Gujarat's public spaces safer.
+ What You'll Build
+ Technology that spans the full CCTV
+ integration stack.
+ Feed Integration
+ AI Analytics
+ Vehicle Tracking
+ Video Intelligence
+ Object & Face Detection
+ Cybersecurity
+ Scalable Architecture
+ Live Monitoring
+ Feed Integration
+ AI Analytics
+ Vehicle Tracking
+ Video Intelligence
+ Object & Face Detection
+ Cybersecurity
+ Scalable Architecture
+ Live Monitoring
+ Official Dataset
+ A realistic Government
+ CCTV environment.
+ No synthetic samples. No staged scenarios. You'll work with real CCTV footage
+ from
+ active Government infrastructure — the same feeds that power Gujarat's public-safety operations
+ across five key departments.
+ Proving Ground: 
+ 30+ cameras, 12 hours of footage per camera, and a live simulation pipeline designed to separate
+ production-ready solutions from prototypes.
+ 30+
+ Cameras
+ Live
+ and archived Government CCTV feeds.
+ 5
+ Departments
+ Health
+ • Police • GSRTC • Panchayat • Municipal.
+ 12 Hrs
+ Feed Per Camera
+ Plus a
+ live simulation environment.
+ Who Can Participate
+ Built for every kind of builder.
+ Students
+ Undergrad and postgrad teams from any recognized academic institute across India.
+ Researchers
+ Academic faculty, PhD scholars, and independent R&D research groups.
+ DPIIT Startups
+ Registered early-stage technology startups building cutting-edge AI solutions.
+ Industry
+ Working professionals and engineers building in AI, Computer Vision or Security.
+ Companies
+ Established technology enterprises and software development firms.
+ System Integrators
+ Security deployment teams who integrate technology at Government scale.
+ The Challenge
+ Code Today.
+Secure Tomorrow.
+ Total Prize Pool
+ ₹ 51,00,000
+ THE JOURNEY
+ From registration
+ to the grand finale.
+ 1 
+ Register
+ Join the official challenge.
+ 2 
+ Explore Resources
+ Datasets, docs and tools.
+ 3 
+ Access Problem
+ Read the full statement.
+ 4 
+ Develop
+ Build your solution.
+ 5 
+ Sandbox Eval
+ Integrate with test feeds.
+ 6 
+ Grand Finale
+ Top 6 demonstrate live.
+ WHY THIS MATTERS
+ Contribute to Gujarat's digital policing future.
+ Your solution can help build a secure, intelligent CCTV network across Gujarat, at a scale of
+ 80,000+ cameras.
+ Gujarat Police Innovation Hackathon 2026 — A flagship initiative to
+ harness technology for
+ public
+ safety and law enforcement excellence across Gujarat.
+ i-Hub Gujarat 
+ Quick Links
+ Home 
+ Problem
+ Statements 
+ Register 
+ Sign In 
+ FAQs 
+ Important Dates
+ Registration Open:
+ 4 August 2026 
+ Last Date:
+ 28 September 2026 
+ Shortlisting:
+ 28 September 2026 
+ Event:
+ 12–13 October 2026 
+ Results:
+ 13 October 2026 
+ Contact
+ State Crime Record Bureau (SCRB), Next to Police Bhawan Sector - 18 Gandhinagar, Gujarat - 382009 
+ +91 95370 89982 
+ sentinel.hackathon@gujarat.gov.in 
+ https://gujhome.gujarat.gov.in 
+ State Crime Record
+ Bureau
+ © 2026 Gujarat Police Innovation Hackathon. All Rights Reserved. | Government of Gujarat 
+ A11Y 
+ Accessibility
+ FONT SIZE
+ A+ 
+ A- 
+ DISPLAY
+ High Contrast
+ Dyslexia Font
+ AUDIO
+ Listen to Page 
+ Reset All
+ AI 
+ AI Hackathon Assistant
+ 🟢 Online — Ask me anything
+ 👋 Hello! I'm your Gujarat Police Hackathon Assistant .
+ How can I help you today?
+ Which problem should I choose? 
+ Explain problem in simple language 
+ How to register? 
+ Important dates 
+ Prize details 
+ Show me FAQs 
+ Technology stack 
+ Registration fee 
+ GUJARAT POLICE
+ SENTINEL
+ ONE LAST TIME 
+ By Popular Demand — Hackathon Date Extended!
+ In response to the continued interest and requests from participants, we are pleased to extend the solution submission deadline to 28 September 2026 , providing teams with additional time to refine their solutions and present their best work.
+ HACKATHON DATES 
+ 12 – 13 October 2026 
+ EXTENDED 
+ LAST DATE FOR SUBMISSION 
+ 28 September 2026 
+ NEW DEADLINE 
+ More time. More innovation. One bigger opportunity! 
+ Don’t miss your chance to participate and showcase your solution. 
+ Participate Now 
+ Continue to Website
+ GUJARAT POLICE | SAFER GUJARAT, STRONGER TOMORROW.
+ ANNOUNCEMENT 
+ Date Extended: 12–13 Oct
