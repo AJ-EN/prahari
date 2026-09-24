@@ -105,7 +105,7 @@ MAX_RTO_DISTRICT: dict[str, int] = {
     "AS": 35, "HP": 99, "JK": 22, "UK": 20, "UA": 20, "GA": 12,
     "CH": 4, "PY": 5, "TR": 8, "ML": 14, "MN": 7, "MZ": 8,
     "NL": 10, "SK": 6, "AR": 26, "AN": 1, "LD": 9, "DD": 3,
-    "DN": 9, "LA": 2,
+    "DN": 9, "LA": 2, "TG": 38,
 }
 
 # Gujarat RTO district codes -> office, for registry enrichment and for making
@@ -142,6 +142,7 @@ FORMATS: list[tuple[str, str, str]] = [
     ("standard_3l",  "SSDDAAADDDD", "GJ 01 ABC 1234"),
     ("standard_sd2", "SSDAADDDD",   "GJ 1 AB 1234 — single-digit district"),
     ("standard_sd1", "SSDADDDD",    "GJ 1 A 1234"),
+    ("standard_sd3", "SSDAAADDDD",  "DL 3C BJ 5087 — Delhi-style category letter"),
     ("no_series",    "SSDDDDDD",    "GJ 01 1234 — older, no letter series"),
     ("bh_series",    "DDBHDDDDAA",  "22 BH 1234 AA — Bharat series"),
     ("bh_series_1",  "DDBHDDDDA",   "22 BH 1234 A — Bharat series"),
@@ -304,6 +305,9 @@ _CONFUSION_PAIRS: dict[frozenset[str], float] = {
     frozenset("VY"): 0.45,
     frozenset("DO"): 0.20,
     frozenset("JI"): 0.40,
+    frozenset("WN"): 0.40,
+    frozenset("WM"): 0.35,
+    frozenset("WV"): 0.40,
 }
 
 _SUB_COST: dict[tuple[str, str], float] = {}

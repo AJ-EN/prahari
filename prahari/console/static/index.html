@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>PRAHARI Console</title>
+  <meta name="description" content="PRAHARI — Gujarat Police CCTV registry, live watchlist alerts and cross-camera vehicle trace.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 4 7v8c0 7.5 5.1 13.3 12 15 6.9-1.7 12-7.5 12-15V7z' fill='%230b5cad'/%3E%3Cpath d='M16 9a7 7 0 0 0-7 7h3a4 4 0 0 1 8 0h3a7 7 0 0 0-7-7zm0 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/static/app.css">
+  <script>
+    // Apply the saved theme before first paint (no flash).
+    try { var t = localStorage.getItem("prahari.theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script src="/static/vendor/leaflet/leaflet.js" defer></script>
+  <script type="module" src="/static/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand" href="#/overview" aria-label="PRAHARI console home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 7v8c0 7.5 5.1 13.3 12 15 6.9-1.7 12-7.5 12-15V7z"/><path d="M16 9a7 7 0 0 0-7 7h3a4 4 0 0 1 8 0h3a7 7 0 0 0-7-7zm0 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#fff"/></svg>
+      <span class="brand-text"><strong>PRAHARI</strong><span class="brand-sub">Sentinel console</span></span>
+    </a>
+    <div class="topbar-right">
+      <span id="conn" class="conn" role="status" aria-live="polite"><span class="conn-dot" aria-hidden="true"></span><span class="conn-text">Connecting…</span></span>
+      <span id="clock" class="clock" aria-label="Current time, India Standard Time"></span>
+      <button id="sound-btn" type="button" class="btn ghost icon-btn" aria-pressed="false"></button>
+      <button id="theme-btn" type="button" class="btn ghost icon-btn"></button>
+    </div>
+  </header>
+
+  <nav id="nav" class="nav" aria-label="Sections"></nav>
+
+  <main id="main" tabindex="-1">
+    <div id="server-banner" class="server-banner" role="alert" hidden></div>
+    <noscript><p class="notice notice-error">The PRAHARI console needs JavaScript enabled.</p></noscript>
+    <div id="views"></div>
+  </main>
+
+  <div id="toasts" class="toasts" aria-live="assertive" aria-relevant="additions"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+logLevel: warn
+rtspAddress: :8554
+rtmp: no
+srt: no
+hlsAddress: :8888
+webrtcAddress: :8889
+api: no
+paths:
+  stream/1:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam01.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/1
+    runOnInitRestart: yes
+  stream/2:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam02.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/2
+    runOnInitRestart: yes
+  stream/3:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam03.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/3
+    runOnInitRestart: yes
+  stream/4:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam04.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/4
+    runOnInitRestart: yes
+  stream/5:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam05.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/5
+    runOnInitRestart: yes
+  stream/6:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam06.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/6
+    runOnInitRestart: yes
+  stream/7:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam07.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/7
+    runOnInitRestart: yes
+  stream/8:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam08.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/8
+    runOnInitRestart: yes
+  stream/9:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam09.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/9
+    runOnInitRestart: yes
+  stream/10:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam10.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/10
+    runOnInitRestart: yes
+  stream/11:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam11.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/11
+    runOnInitRestart: yes
+  stream/12:
+    runOnInit: ffmpeg -hide_banner -loglevel error -re -stream_loop -1 -i '/Users/ayushjangid/Developer/gujrat-police hackathon/sandbox/clips/cam12.mp4' -c copy -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:8554/stream/12
+    runOnInitRestart: yes

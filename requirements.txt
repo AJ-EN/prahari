@@ -1,0 +1,13 @@
+# PRAHARI runtime dependencies. Install with:  pip install -r requirements.txt
+# Tested on Python 3.12 (macOS arm64) with the versions noted; ranges allow
+# the matching wheels on Windows and Linux.
+fastapi>=0.115,<1          # tested 0.141.1
+uvicorn>=0.30,<1           # tested 0.53.0
+pydantic>=2.9,<3           # tested 2.13.5
+httpx>=0.27,<1             # tested 0.28.1
+numpy>=2.0,<3              # tested 2.5.3
+opencv-python-headless>=4.10   # tested 5.0.0.93
+av>=14,<19                 # tested 18.1.0   (PyAV: RTSP/H.264/H.265 decoding)
+onnxruntime>=1.20,<2       # tested 1.30.0   (NVIDIA GPU: install onnxruntime-gpu instead)
+fast-alpr[onnx]>=0.4,<0.5  # tested 0.4.0    (plate detector + OCR, ~11 MB of models)
+pillow>=10                 # tested 12.3.0

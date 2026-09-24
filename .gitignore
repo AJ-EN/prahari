@@ -6,3 +6,7 @@ data/
 *.mp4
 *.log
 .DS_Store
+models/
+
+prahari.env
+!sandbox/demo/*.mp4
