@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRAHARI, Explained</title>
+<style>
+:root{
+  --bg:#EDF0F3; --surface:#FFFFFF; --ink:#22272D; --muted:#5A6570; --road:#A3ADB7; --line:#D3DAE0;
+  --green:#1F7A4E; --blue:#1E4FA3; --amber:#D9961A; --red:#C0392B;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#13171C; --surface:#1C2229; --ink:#E4E9EE; --muted:#9BA7B3; --road:#4E5963; --line:#2B333C;
+    --green:#3FAE78; --blue:#6A9BF0; --amber:#E8B04A; --red:#E0624F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#13171C; --surface:#1C2229; --ink:#E4E9EE; --muted:#9BA7B3; --road:#4E5963; --line:#2B333C;
+  --green:#3FAE78; --blue:#6A9BF0; --amber:#E8B04A; --red:#E0624F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.35}
+main{max-width:880px;margin:0 auto;padding:0 16px 72px}
+section{padding:52px 0;border-top:2px solid var(--line)}
+section:first-of-type{border-top:none;padding-top:40px}
+.k{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:700;margin:0 0 10px}
+h1{font-size:clamp(36px,7.5vw,64px);font-weight:850;line-height:1.02;letter-spacing:-.02em;margin:0 0 14px}
+h2{font-size:clamp(27px,5vw,42px);font-weight:820;line-height:1.08;letter-spacing:-.015em;margin:0 0 12px}
+.say{font-size:clamp(18px,2.6vw,22px);color:var(--muted);margin:0 0 22px;max-width:36ch}
+.say b{color:var(--ink)}
+.pic{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+svg{width:100%;height:auto;display:block}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.lab{display:inline-block;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.lab.bad{background:color-mix(in srgb,var(--red) 16%,transparent);color:var(--red)}
+.lab.good{background:color-mix(in srgb,var(--green) 18%,transparent);color:var(--green)}
+.cap{font-size:18px;margin:12px 2px 0;font-weight:600}
+.cap span{color:var(--muted);font-weight:400}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:14px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:28px;color:var(--red)}
+.stat span{color:var(--muted);font-size:16px}
+.big{font-size:clamp(26px,5vw,40px);font-weight:850;margin:18px 0 0}
+.big .g{color:var(--green)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px;font-size:16px;color:var(--muted)}
+.legend i{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
+.lists ul{margin:0;padding:0;list-style:none}
+.lists li{padding:8px 0;border-bottom:1px solid var(--line);font-size:18px}
+.lists li:last-child{border-bottom:none}
+.honest{border-left:5px solid var(--amber);background:var(--surface);border-radius:10px;padding:14px 18px;margin-top:18px}
+.honest p{margin:6px 0;font-size:18px}
+footer{color:var(--muted);font-size:14px;text-align:center;padding-top:28px;border-top:2px solid var(--line)}
+/* svg paint */
+.f-ink{fill:var(--ink)} .f-muted{fill:var(--muted)} .f-road{fill:var(--road)} .f-line{fill:var(--line)}
+.f-surface{fill:var(--surface)} .f-bg{fill:var(--bg)} .f-green{fill:var(--green)} .f-blue{fill:var(--blue)}
+.f-amber{fill:var(--amber)} .f-red{fill:var(--red)} .soft{opacity:.4}
+.s-ink{stroke:var(--ink)} .s-road{stroke:var(--road)} .s-line{stroke:var(--line)} .s-green{stroke:var(--green)}
+.s-blue{stroke:var(--blue)} .s-amber{stroke:var(--amber)} .s-red{stroke:var(--red)} .s-muted{stroke:var(--muted)}
+.t{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;fill:var(--ink)}
+.tb{font-weight:800}
+.tm{fill:var(--muted)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.plate-t{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:26px;font-weight:800;fill:#111}
+.wall-t{font-family:system-ui,Arial,sans-serif;font-size:13px;fill:#9BA7B3;letter-spacing:.08em;text-transform:uppercase}
+.ov-t{font-family:system-ui,Arial,sans-serif;font-size:11px;font-weight:800}
+.draw{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.6s ease-out .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pulse{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}.pulse{animation:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cam" viewBox="0 0 40 28">
+      <rect x="1" y="6" width="27" height="17" rx="4"/>
+      <path d="M28 11 L39 6 V23 L28 18 Z"/>
+      <circle cx="13" cy="14.5" r="4.5" class="f-surface"/>
+    </symbol>
+    <symbol id="scr-road" viewBox="0 0 90 64">
+      <rect width="90" height="64" fill="#2A3038"/>
+      <polygon points="24,64 66,64 50,14 40,14" fill="#5A636D"/>
+      <line x1="45" y1="18" x2="45" y2="62" stroke="#C9D1D9" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <rect x="38" y="38" width="16" height="13" rx="2" fill="#D6DCE2"/>
+    </symbol>
+    <symbol id="scr-hall" viewBox="0 0 90 64">
+      <rect width="90" height="64" fill="#2A3038"/>
+      <polygon points="8,64 82,64 60,28 30,28" fill="#454D57"/>
+      <rect x="30" y="10" width="30" height="18" fill="#3A424B"/>
+      <circle cx="48" cy="34" r="3.5" fill="#D6DCE2"/>
+      <rect x="45.5" y="38" width="5" height="14" rx="2" fill="#D6DCE2"/>
+    </symbol>
+    <symbol id="scr-depot" viewBox="0 0 90 64">
+      <rect width="90" height="64" fill="#2A3038"/>
+      <rect x="4" y="18" width="42" height="22" rx="3" fill="#9C7A33"/>
+      <rect x="8" y="22" width="34" height="8" fill="#C9D1D9" opacity=".6"/>
+      <g fill="#D6DCE2"><circle cx="56" cy="32" r="3"/><circle cx="63" cy="36" r="3"/><circle cx="70" cy="31" r="3"/><circle cx="77" cy="37" r="3"/><circle cx="60" cy="44" r="3"/><circle cx="68" cy="45" r="3"/><circle cx="76" cy="46" r="3"/><circle cx="83" cy="41" r="3"/></g>
+    </symbol>
+    <symbol id="scr-gate" viewBox="0 0 90 64">
+      <rect width="90" height="64" fill="#2A3038"/>
+      <g stroke="#6B7580" stroke-width="3"><line x1="6" y1="20" x2="6" y2="60"/><line x1="16" y1="20" x2="16" y2="60"/><line x1="26" y1="20" x2="26" y2="60"/><line x1="36" y1="20" x2="36" y2="60"/><line x1="4" y1="22" x2="40" y2="22"/></g>
+      <circle cx="62" cy="32" r="3.5" fill="#D6DCE2"/>
+      <rect x="59.5" y="36" width="5" height="16" rx="2" fill="#D6DCE2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+
+<!-- 1. HERO -->
+<section>
+  <p class="k">Gujarat Police · Sentinel Hackathon 2026</p>
+  <h1>80,000 cameras. 26 owners. Nobody talking.</h1>
+  <p class="say">Police, hospitals, RTO, buses, villages — each runs its own cameras. <b>None of them connect.</b></p>
+  <div class="pic">
+    <svg viewBox="0 0 600 360" role="img" aria-label="Six fenced-off groups of cameras, one per department, with blocked links between them">
+      <g stroke-width="3" stroke-dasharray="9 6" class="f-surface">
+        <rect x="15" y="15" width="170" height="150" rx="16" class="s-blue"/>
+        <rect x="215" y="15" width="170" height="150" rx="16" class="s-green"/>
+        <rect x="415" y="15" width="170" height="150" rx="16" class="s-amber"/>
+        <rect x="15" y="195" width="170" height="150" rx="16" class="s-red"/>
+        <rect x="215" y="195" width="170" height="150" rx="16" class="s-muted"/>
+        <rect x="415" y="195" width="170" height="150" rx="16" class="s-ink"/>
+      </g>
+      <g font-size="20" class="t tb">
+        <text x="30" y="46">Police</text><text x="230" y="46">Health</text><text x="430" y="46">RTO</text>
+        <text x="30" y="226">GSRTC buses</text><text x="230" y="226">Panchayat</text><text x="430" y="226">Civil Supplies</text>
+      </g>
+      <g>
+        <use href="#cam" x="32" y="66" width="46" height="32" class="f-blue"/><use href="#cam" x="118" y="66" width="46" height="32" class="f-blue"/><use href="#cam" x="75" y="112" width="46" height="32" class="f-blue"/>
+        <use href="#cam" x="232" y="66" width="46" height="32" class="f-green"/><use href="#cam" x="318" y="66" width="46" height="32" class="f-green"/><use href="#cam" x="275" y="112" width="46" height="32" class="f-green"/>
+        <use href="#cam" x="432" y="66" width="46" height="32" class="f-amber"/><use href="#cam" x="518" y="66" width="46" height="32" class="f-amber"/><use href="#cam" x="475" y="112" width="46" height="32" class="f-amber"/>
+        <use href="#cam" x="32" y="246" width="46" height="32" class="f-red"/><use href="#cam" x="118" y="246" width="46" height="32" class="f-red"/><use href="#cam" x="75" y="292" width="46" height="32" class="f-red"/>
+        <use href="#cam" x="232" y="246" width="46" height="32" class="f-muted"/><use href="#cam" x="318" y="246" width="46" height="32" class="f-muted"/><use href="#cam" x="275" y="292" width="46" height="32" class="f-muted"/>
+        <use href="#cam" x="432" y="246" width="46" height="32" class="f-ink"/><use href="#cam" x="518" y="246" width="46" height="32" class="f-ink"/><use href="#cam" x="475" y="292" width="46" height="32" class="f-ink"/>
+      </g>
+      <g font-size="26" font-weight="900" text-anchor="middle" class="f-red" font-family="system-ui,Arial">
+        <text x="200" y="99">✕</text><text x="400" y="99">✕</text><text x="200" y="279">✕</text><text x="400" y="279">✕</text>
+        <text x="100" y="189">✕</text><text x="300" y="189">✕</text><text x="500" y="189">✕</text>
+      </g>
+    </svg>
+  </div>
+  <p class="cap">6 shown. <span>20 more departments look the same.</span></p>
+</section>
+
+<!-- 2. THE ASK -->
+<section>
+  <p class="k">What they want</p>
+  <h2>Give a number plate. See where it went.</h2>
+  <p class="say">On the final day, judges read out <b>one plate</b>. We must draw that car's trip across ~50 cameras.</p>
+  <div class="pic">
+    <svg viewBox="0 0 600 360" role="img" aria-label="A number plate GJ 01 AB 1234, and below it a map where four cameras along one road light up green with times 14:02, 14:09, 14:21 and 14:34">
+      <rect x="170" y="8" width="260" height="58" rx="8" fill="#FFFFFF" stroke="#111" stroke-width="3"/>
+      <rect x="174" y="12" width="28" height="50" rx="5" fill="#1E4FA3"/>
+      <text x="188" y="56" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF" font-family="system-ui,Arial">IND</text>
+      <text x="316" y="48" text-anchor="middle" class="plate-t">GJ 01 AB 1234</text>
+      <line x1="300" y1="72" x2="300" y2="96" class="s-ink" stroke-width="3"/>
+      <polygon points="292,94 308,94 300,104" class="f-ink"/>
+      <rect x="10" y="108" width="580" height="244" rx="16" class="f-bg s-line" stroke-width="2"/>
+      <g fill="none" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" class="s-road">
+        <path d="M30 322 L150 264 L300 274 L430 202 L570 142"/>
+        <path d="M150 264 L175 146 L310 132"/>
+        <path d="M300 274 L335 338"/>
+        <path d="M430 202 L492 332"/>
+      </g>
+      <path d="M30 322 L150 264 L300 274 L430 202 L570 142" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="s-green draw"/>
+      <g class="f-muted" stroke="#FFFFFF" stroke-width="3">
+        <circle cx="175" cy="146" r="11"/><circle cx="310" cy="132" r="11"/><circle cx="335" cy="334" r="11"/><circle cx="492" cy="326" r="11"/>
+      </g>
+      <g class="f-green" stroke="#FFFFFF" stroke-width="3">
+        <circle cx="150" cy="264" r="13"/><circle cx="300" cy="274" r="13"/><circle cx="430" cy="202" r="13"/><circle cx="570" cy="142" r="13"/>
+      </g>
+      <g font-size="19" font-weight="800" text-anchor="middle" class="t mono">
+        <text x="126" y="244">14:02</text><text x="300" y="310">14:09</text><text x="430" y="180">14:21</text><text x="548" y="124">14:34</text>
+      </g>
+    </svg>
+  </div>
+  <p class="cap">Green = cameras that saw it. <span>Plus an alert if the car is on a stolen or wanted list.</span></p>
+</section>
+
+<!-- 3. THE OBVIOUS WAY -->
+<section>
+  <p class="k">The obvious idea</p>
+  <h2>Pipe every video into one room?</h2>
+  <div class="pic">
+    <svg viewBox="0 0 600 310" role="img" aria-label="Many cameras with thick pipes carrying video into one central building, stamped TOO BIG">
+      <g class="f-muted">
+        <use href="#cam" x="16" y="30" width="40" height="28"/><use href="#cam" x="66" y="30" width="40" height="28"/><use href="#cam" x="116" y="30" width="40" height="28"/>
+        <use href="#cam" x="16" y="90" width="40" height="28"/><use href="#cam" x="66" y="90" width="40" height="28"/><use href="#cam" x="116" y="90" width="40" height="28"/>
+        <use href="#cam" x="16" y="150" width="40" height="28"/><use href="#cam" x="66" y="150" width="40" height="28"/><use href="#cam" x="116" y="150" width="40" height="28"/>
+        <use href="#cam" x="16" y="210" width="40" height="28"/><use href="#cam" x="66" y="210" width="40" height="28"/><use href="#cam" x="116" y="210" width="40" height="28"/>
+      </g>
+      <text x="86" y="280" text-anchor="middle" font-size="22" class="t tb">× 80,000</text>
+      <g fill="none" stroke-width="16" stroke-linecap="round" class="s-road">
+        <path d="M165 44 C300 44 300 130 420 130"/>
+        <path d="M165 104 C300 104 300 155 420 155"/>
+        <path d="M165 164 C300 164 300 180 420 180"/>
+        <path d="M165 224 C300 224 300 205 420 205"/>
+      </g>
+      <rect x="420" y="62" width="165" height="200" rx="6" class="f-ink"/>
+      <g class="f-amber">
+        <rect x="438" y="82" width="22" height="18"/><rect x="474" y="82" width="22" height="18"/><rect x="510" y="82" width="22" height="18"/><rect x="546" y="82" width="22" height="18"/>
+        <rect x="438" y="118" width="22" height="18"/><rect x="474" y="118" width="22" height="18"/><rect x="510" y="118" width="22" height="18"/><rect x="546" y="118" width="22" height="18"/>
+        <rect x="438" y="210" width="22" height="18"/><rect x="474" y="210" width="22" height="18"/><rect x="510" y="210" width="22" height="18"/><rect x="546" y="210" width="22" height="18"/>
+      </g>
+      <g transform="rotate(-12 502 170)">
+        <rect x="422" y="144" width="160" height="54" rx="6" class="f-surface s-red" stroke-width="5"/>
+        <text x="502" y="181" text-anchor="middle" font-size="29" font-weight="900" class="f-red" font-family="system-ui,Arial">TOO BIG</text>
+      </g>
+      <text x="502" y="292" text-anchor="middle" font-size="17" class="t tm">one central room</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>160 Gbps</b><span>of cable, running all day, every day</span></div>
+    <div class="stat"><b>52 PB</b><span>of hard disks for 30 days of video</span></div>
+    <div class="stat"><b>~2,000</b><span>GPUs to watch it all</span></div>
+  </div>
+</section>
+
+<!-- 4. OUR WAY -->
+<section>
+  <p class="k">Our idea — the whole project in one picture</p>
+  <h2>Keep the video. Send a note.</h2>
+  <p class="say">A small box sits beside the cameras. It watches locally and <b>only writes down what it saw.</b></p>
+  <div class="pair">
+    <div class="pic">
+      <span class="lab bad">Obvious way</span>
+      <svg viewBox="0 0 300 200" role="img" aria-label="A camera sending a huge film reel">
+        <use href="#cam" x="8" y="78" width="72" height="50" class="f-ink"/>
+        <line x1="88" y1="103" x2="124" y2="103" class="s-ink" stroke-width="4"/>
+        <polygon points="122,95 136,103 122,111" class="f-ink"/>
+        <circle cx="215" cy="103" r="78" class="f-red"/>
+        <g class="f-surface"><circle cx="215" cy="59" r="15"/><circle cx="257" cy="89" r="15"/><circle cx="241" cy="139" r="15"/><circle cx="189" cy="139" r="15"/><circle cx="173" cy="89" r="15"/><circle cx="215" cy="103" r="9"/></g>
+      </svg>
+      <p class="cap">All the video. <span>Every second, forever.</span></p>
+    </div>
+    <div class="pic">
+      <span class="lab good">Our way</span>
+      <svg viewBox="0 0 300 200" role="img" aria-label="A camera with a small box beside it sending a tiny note reading GJ01AB1234, CAM 417, 14:02:11">
+        <use href="#cam" x="8" y="118" width="72" height="50" class="f-ink"/>
+        <rect x="88" y="126" width="54" height="38" rx="7" class="f-green"/>
+        <text x="115" y="151" text-anchor="middle" font-size="14" font-weight="800" fill="#FFFFFF" font-family="system-ui,Arial">box</text>
+        <path d="M130 122 C150 96 160 88 172 84" fill="none" class="s-green" stroke-width="3" stroke-dasharray="5 4"/>
+        <rect x="160" y="18" width="132" height="74" rx="6" fill="#FFFFFF" stroke="#22272D" stroke-width="2"/>
+        <g font-size="15" font-weight="700" fill="#22272D" class="mono">
+          <text x="172" y="42">GJ01AB1234</text><text x="172" y="62">CAM 417</text><text x="172" y="82">14:02:11</text>
+        </g>
+      </svg>
+      <p class="cap">Just the facts. <span>Video stays home.</span></p>
+    </div>
+  </div>
+  <div class="pic" style="margin-top:16px">
+    <svg viewBox="0 0 600 120" role="img" aria-label="Bar comparison: sending video needs a full-width bar of 160 gigabits per second; sending notes needs a bar so thin it is barely visible, 0.39 gigabits per second">
+      <text x="0" y="37" font-size="18" class="t tb">Send video</text>
+      <rect x="140" y="14" width="450" height="32" rx="4" class="f-red"/>
+      <text x="580" y="37" text-anchor="end" font-size="17" font-weight="800" fill="#FFFFFF" font-family="ui-monospace,Menlo,monospace">160 Gbps</text>
+      <text x="0" y="97" font-size="18" class="t tb">Send notes</text>
+      <rect x="140" y="74" width="2" height="32" class="f-green"/>
+      <line x1="146" y1="90" x2="176" y2="90" class="s-green" stroke-width="2"/>
+      <text x="184" y="96" font-size="17" font-weight="800" class="f-green" font-family="ui-monospace,Menlo,monospace">0.39 Gbps ← yes, this thin</text>
+    </svg>
+  </div>
+  <p class="big">About <span class="g">400× less</span> to carry across the state.</p>
+</section>
+
+<!-- 5. WHY THEY SAY YES -->
+<section>
+  <p class="k">The real problem is people, not tech</p>
+  <h2>Why 26 departments can say yes</h2>
+  <div class="pair">
+    <div class="pic">
+      <span class="lab bad">Asking too much</span>
+      <svg viewBox="0 0 300 240" role="img" aria-label="A department building with its door flung open and a big red arrow reaching in from outside">
+        <polygon points="40,92 150,30 260,92" class="f-muted"/>
+        <rect x="55" y="92" width="190" height="136" class="f-surface s-ink" stroke-width="3"/>
+        <text x="150" y="128" text-anchor="middle" font-size="18" class="t tb">Dept.</text>
+        <rect x="125" y="156" width="50" height="72" class="f-ink"/>
+        <polygon points="175,156 206,166 206,236 175,228" class="f-amber"/>
+        <line x1="296" y1="192" x2="222" y2="192" class="s-red" stroke-width="7"/>
+        <polygon points="226,180 204,192 226,204" class="f-red"/>
+      </svg>
+      <p class="cap">"Open your network. <span>Hand over your video."</span></p>
+    </div>
+    <div class="pic">
+      <span class="lab good">Asking nothing</span>
+      <svg viewBox="0 0 300 240" role="img" aria-label="The same building with its door locked; a small box inside posts an envelope out through a slot in the wall">
+        <polygon points="40,92 150,30 260,92" class="f-muted"/>
+        <rect x="55" y="92" width="190" height="136" class="f-surface s-ink" stroke-width="3"/>
+        <text x="150" y="128" text-anchor="middle" font-size="18" class="t tb">Dept.</text>
+        <rect x="125" y="156" width="50" height="72" class="f-muted"/>
+        <rect x="140" y="186" width="20" height="16" rx="2" class="f-amber"/>
+        <path d="M143 186 v-6 a7 7 0 0 1 14 0 v6" fill="none" class="s-amber" stroke-width="3"/>
+        <rect x="70" y="160" width="44" height="30" rx="5" class="f-green"/>
+        <text x="92" y="180" text-anchor="middle" font-size="12" font-weight="800" fill="#FFFFFF" font-family="system-ui,Arial">box</text>
+        <line x1="114" y1="175" x2="118" y2="175" class="s-green" stroke-width="2"/>
+        <rect x="241" y="166" width="6" height="22" class="f-ink"/>
+        <rect x="256" y="162" width="36" height="26" fill="#FFFFFF" stroke="#22272D" stroke-width="2"/>
+        <path d="M256 162 L274 177 L292 162" fill="none" stroke="#22272D" stroke-width="2"/>
+      </svg>
+      <p class="cap">Door stays locked. <span>Only notes go out.</span></p>
+    </div>
+  </div>
+  <p class="say" style="margin-top:18px">No firewall change. No new cameras. <b>They keep their video and the key.</b></p>
+</section>
+
+<!-- 6. PLATE TYPOS -->
+<section>
+  <p class="k">Our first built piece</p>
+  <h2>Cameras misspell plates. We fix it.</h2>
+  <p class="say">No state's code is <b>6J</b>. Gujarat's is <b>GJ</b>. So that 6 must be a G.</p>
+  <div class="pic">
+    <svg viewBox="0 0 600 310" role="img" aria-label="The camera read 6J 01 A8 I234. Exact search finds no match and the car is missed. Fixing the three typos gives GJ 01 AB 1234, which is on the stolen list">
+      <text x="300" y="22" text-anchor="middle" font-size="16" class="t tm">what the camera read</text>
+      <rect x="170" y="32" width="260" height="56" rx="8" fill="#FFFFFF" stroke="#111" stroke-width="3"/>
+      <rect x="174" y="36" width="28" height="48" rx="5" fill="#1E4FA3"/>
+      {{PLATE_BAD}}
+      <line x1="250" y1="94" x2="150" y2="146" class="s-muted" stroke-width="3"/>
+      <line x1="350" y1="94" x2="450" y2="146" class="s-muted" stroke-width="3"/>
+      <text x="140" y="170" text-anchor="middle" font-size="19" class="t tb">search for exact text</text>
+      <circle cx="140" cy="214" r="27" class="f-red"/>
+      <text x="140" y="224" text-anchor="middle" font-size="28" font-weight="900" fill="#FFFFFF" font-family="system-ui,Arial">✕</text>
+      <text x="140" y="272" text-anchor="middle" font-size="18" class="t">no match —</text>
+      <text x="140" y="294" text-anchor="middle" font-size="18" class="t tb">car gets away</text>
+      <text x="460" y="170" text-anchor="middle" font-size="19" class="t tb">fix the typos</text>
+      <text x="460" y="194" text-anchor="middle" font-size="16" class="t tm mono">6→G · 8→B · I→1</text>
+      <rect x="338" y="206" width="244" height="52" rx="8" fill="#FFFFFF" class="s-green" stroke-width="4"/>
+      <rect x="342" y="210" width="26" height="44" rx="5" fill="#1E4FA3"/>
+      <text x="474" y="242" text-anchor="middle" class="plate-t" style="font-size:24px">GJ 01 AB 1234</text>
+      <text x="460" y="290" text-anchor="middle" font-size="18" font-weight="800" class="f-green" font-family="system-ui,Arial">✓ on the stolen list</text>
+    </svg>
+  </div>
+  <p class="say" style="margin-top:24px">Now 100 wanted cars drive past. <b>1 in 10 letters gets misread.</b></p>
+  <div class="pic">
+    <svg viewBox="0 0 600 262" role="img" aria-label="Two grids of 100 dots. Old way: 32 cars found. Our way: 48 found with an automatic alert plus 35 more flagged for a human to check, 83 in total">
+      {{DOTS_OLD}}
+      {{DOTS_NEW}}
+      <text x="139" y="254" text-anchor="middle" font-size="19" class="t tb">Old way: 32 found</text>
+      <text x="439" y="254" text-anchor="middle" font-size="19" class="t tb">Ours: 83 found</text>
+    </svg>
+    <div class="legend">
+      <span><i style="background:var(--green)"></i>alert fires</span>
+      <span><i style="background:var(--green);opacity:.4"></i>shown to a human to check</span>
+      <span><i style="background:var(--road)"></i>missed</span>
+    </div>
+  </div>
+  <p class="cap">And <b>zero</b> false alarms. <span>Tested on made-up plates — not real cameras yet.</span></p>
+</section>
+
+<!-- 7. EVERY CAMERA GETS A JOB -->
+<section>
+  <p class="k">Most teams will miss this</p>
+  <h2>Every camera gets a job it can do</h2>
+  <p class="say">A hospital corridor never sees a number plate. <b>So watch it for people instead.</b></p>
+  <div class="pair">
+    <div class="pic">
+      <span class="lab bad">Plates only</span>
+      <svg viewBox="0 0 300 210" role="img" aria-label="A control room wall of six screens; only the two road screens are working, four are dark with the words no cars">
+        {{WALL_BEFORE}}
+      </svg>
+      <p class="cap">6 screens. <span>2 doing anything.</span></p>
+    </div>
+    <div class="pic">
+      <span class="lab good">Right job each</span>
+      <svg viewBox="0 0 300 210" role="img" aria-label="The same wall with all six screens working: plates on roads, a person in a corridor, a crowd count of 34 at a bus depot, loitering at a gate">
+        {{WALL_AFTER}}
+      </svg>
+      <p class="cap">6 screens. <span>6 doing their job.</span></p>
+    </div>
+  </div>
+  <p class="say" style="margin-top:18px">The system watches each new camera for a minute and <b>picks the job itself.</b></p>
+</section>
+
+<!-- 8. SCOREBOARD -->
+<section>
+  <p class="k">Where it stands · 24 September</p>
+  <h2>3 of 10 done</h2>
+  <div class="pic">
+    <svg viewBox="0 0 600 64" role="img" aria-label="Ten blocks, three filled with check marks, seven empty">
+      <g>
+        <rect x="2" y="4" width="52" height="52" rx="8" class="f-green"/><rect x="62" y="4" width="52" height="52" rx="8" class="f-green"/><rect x="122" y="4" width="52" height="52" rx="8" class="f-green"/>
+      </g>
+      <g fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 31 l9 9 l17 -19"/><path d="M75 31 l9 9 l17 -19"/><path d="M135 31 l9 9 l17 -19"/>
+      </g>
+      <g class="f-surface s-line" stroke-width="3">
+        <rect x="182" y="4" width="52" height="52" rx="8"/><rect x="242" y="4" width="52" height="52" rx="8"/><rect x="302" y="4" width="52" height="52" rx="8"/><rect x="362" y="4" width="52" height="52" rx="8"/><rect x="422" y="4" width="52" height="52" rx="8"/><rect x="482" y="4" width="52" height="52" rx="8"/><rect x="542" y="4" width="52" height="52" rx="8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="lists">
+    <div class="pic">
+      <span class="lab good">Done</span>
+      <ul>
+        <li>The plan and the math</li>
+        <li>Plate typo-fixer (20 tests pass)</li>
+        <li>Team slide deck</li>
+      </ul>
+    </div>
+    <div class="pic">
+      <span class="lab bad">Not yet</span>
+      <ul>
+        <li>Connect the ~50 real cameras</li>
+        <li>Camera map (the registry)</li>
+        <li>Video wall</li>
+        <li>Live alerts + car route</li>
+        <li>Evidence locker + access log</li>
+        <li>Speed and cost test</li>
+        <li>Documents + demo videos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9. WHAT'S LEFT -->
+<section>
+  <p class="k">Honestly</p>
+  <h2>4 days to submit</h2>
+  <div class="pic">
+    <svg viewBox="0 0 600 150" role="img" aria-label="Timeline: today 24 September, submission 28 September four days later, finale 12 to 13 October">
+      <line x1="30" y1="78" x2="572" y2="78" class="s-line" stroke-width="6" stroke-linecap="round"/>
+      <line x1="30" y1="78" x2="144" y2="78" class="s-red" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="30" cy="78" r="13" class="f-amber pulse"/>
+      <circle cx="144" cy="78" r="15" class="f-red"/>
+      <rect x="532" y="63" width="42" height="30" rx="15" class="f-green"/>
+      <g font-size="18" font-weight="800" class="t">
+        <text x="30" y="46" text-anchor="start">today</text>
+        <text x="144" y="46" text-anchor="middle">submit</text>
+        <text x="572" y="46" text-anchor="end">finale</text>
+      </g>
+      <g font-size="16" class="t tm mono">
+        <text x="30" y="122" text-anchor="start">24 Sep</text>
+        <text x="144" y="122" text-anchor="middle">28 Sep</text>
+        <text x="572" y="122" text-anchor="end">12–13 Oct</text>
+      </g>
+      <text x="87" y="102" text-anchor="middle" font-size="14" font-weight="800" class="f-red" font-family="system-ui,Arial">4 days</text>
+    </svg>
+  </div>
+  <div class="honest">
+    <p><b>Only the typo-fixer is built.</b> The rest is still a plan.</p>
+    <p>The plate test used <b>made-up plates</b>. Real cameras may do worse.</p>
+    <p>Still to confirm in writing: <b>our category</b>, and how finalists are picked.</p>
+  </div>
+</section>
+
+<footer>Team PRAHARI · Gujarat Police Sentinel Hackathon 2026 · our own explainer, not an official document</footer>
+</main>
+</body>
+</html>
