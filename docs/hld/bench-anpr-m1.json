@@ -1,0 +1,68 @@
+{
+ "machine": "arm64 arm macOS-26.6.2-arm64-arm-64bit",
+ "det_providers": [
+  "CoreMLExecutionProvider",
+  "CPUExecutionProvider"
+ ],
+ "ocr_providers": [
+  "CPUExecutionProvider"
+ ],
+ "intra_op_threads": "default",
+ "iters": 60,
+ "results": {
+  "640/empty": {
+   "median_ms": 3.4,
+   "p90_ms": 3.9,
+   "det_ms": 3.4,
+   "ocr_ms": 0.0,
+   "plates": 0.0,
+   "streams_1fps": 257,
+   "streams_2fps": 128
+  },
+  "640/1 plate": {
+   "median_ms": 17.0,
+   "p90_ms": 22.2,
+   "det_ms": 3.9,
+   "ocr_ms": 12.2,
+   "plates": 1.0,
+   "streams_1fps": 45,
+   "streams_2fps": 22
+  },
+  "960/empty": {
+   "median_ms": 3.4,
+   "p90_ms": 5.3,
+   "det_ms": 3.4,
+   "ocr_ms": 0.0,
+   "plates": 0.0,
+   "streams_1fps": 187,
+   "streams_2fps": 93
+  },
+  "960/1 plate": {
+   "median_ms": 17.4,
+   "p90_ms": 24.5,
+   "det_ms": 3.9,
+   "ocr_ms": 12.9,
+   "plates": 1.0,
+   "streams_1fps": 40,
+   "streams_2fps": 20
+  },
+  "1280/empty": {
+   "median_ms": 3.6,
+   "p90_ms": 4.8,
+   "det_ms": 3.6,
+   "ocr_ms": 0.0,
+   "plates": 0.0,
+   "streams_1fps": 208,
+   "streams_2fps": 104
+  },
+  "1280/1 plate": {
+   "median_ms": 19.4,
+   "p90_ms": 26.2,
+   "det_ms": 5.3,
+   "ocr_ms": 12.5,
+   "plates": 1.0,
+   "streams_1fps": 38,
+   "streams_2fps": 19
+  }
+ }
+}

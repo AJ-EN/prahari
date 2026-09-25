@@ -26,16 +26,35 @@ function stop() {
   currentUrl = null;
 }
 
+/** The plate-reading profile measured by the node, in plain words. */
+function anprSummary(p) {
+  if (!p || typeof p !== "object") return null;
+  const n = (x) => Number(x || 0).toLocaleString("en-IN");
+  if (p.reason === "insufficient data") return `Still measuring (${n(p.frames)} frames so far)`;
+  const pct = (x) => `${Math.round(Number(x || 0) * 100)}%`;
+  const detail = `${n(p.plates)} plates in ${n(p.frames)} frames · typical plate ${Math.round(p.plate_px_median || 0)} px tall · ${pct(p.valid_rate)} read as valid plates`;
+  return p.anpr_viable ? `Yes — ${detail}` : `No — ${p.reason}. ${detail}`;
+}
+
 function capabilityRows(cap) {
   if (!cap || typeof cap !== "object") return [];
   const nice = {
     measured_fps: "Measured frame rate", anpr_viable: "Plate reading possible", anpr_reason: "Why not",
-    plate_px: "Plate width (px)", bitrate_kbps: "Bitrate (kbps)",
+    plate_px: "Plate width (px)", bitrate_kbps: "Bitrate (kbps)", decode_warnings: "Decoder warnings",
   };
-  return Object.entries(cap).map(([k, v]) => [
-    nice[k] || k.replace(/_/g, " "),
-    typeof v === "boolean" ? (v ? "Yes" : "No") : typeof v === "object" ? JSON.stringify(v) : String(v),
-  ]);
+  const rows = [];
+  for (const [k, v] of Object.entries(cap)) {
+    if (k === "state") continue;                       // already shown as Status
+    if (k === "last_error" && !v) continue;            // nothing to report
+    if (v === null || v === undefined) continue;
+    if (k === "anpr") { const s = anprSummary(v); if (s) rows.push(["Plate reading", s]); continue; }
+    if (k === "size" && Array.isArray(v) && v.length === 2) { rows.push(["Measured resolution", `${v[0]} × ${v[1]}`]); continue; }
+    rows.push([
+      nice[k] || k.replace(/_/g, " ").replace(/^./, (c) => c.toUpperCase()),
+      typeof v === "boolean" ? (v ? "Yes" : "No") : typeof v === "object" ? JSON.stringify(v) : String(v),
+    ]);
+  }
+  return rows;
 }
 
 /** Open the dialog for camera `c` (a camera object from /api/cameras). */

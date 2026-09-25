@@ -1,0 +1,5 @@
+keyframes exit=0
+full5 exit=0
+keyframes: samples=16 cpu_median=30% cpu_max=79% rss_median=358MB rss_max=405MB
+full5: samples=16 cpu_median=130% cpu_max=157% rss_median=553MB rss_max=568MB
+DONE

@@ -1,0 +1,1619 @@
+{
+ "started_at": 1790321068.0238478,
+ "seconds": 120.0,
+ "mode": "full",
+ "target_fps": 5.0,
+ "max_width": 960,
+ "catalogue": {
+  "url": "http://127.0.0.1:8092/api/ingest",
+  "polls": 2,
+  "ok": 2,
+  "failures": 0,
+  "last_ok_at": 1790321128.144846,
+  "last_error": "",
+  "listed": 48,
+  "live_listed": 48,
+  "selected": 48,
+  "skipped_no_url": []
+ },
+ "process": {
+  "cpu_pct_avg": 170.7,
+  "cpu_pct_steady_avg": 167.9,
+  "rss_mb_last": 556.4,
+  "rss_mb_peak": 574.4,
+  "ncpu": 8
+ },
+ "totals": {
+  "running": 48,
+  "states": {
+   "live": 48
+  },
+  "live": 48,
+  "stopping": 0,
+  "frames_emitted": 28945,
+  "reconnects": 0,
+  "discontinuities": 0,
+  "warnings": 0,
+  "transport_logs": 0,
+  "decode_errors": 0
+ },
+ "never_live": [],
+ "cameras": [
+  {
+   "id": "1",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "2",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "3",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1454,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "4",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1192,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "5",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "6",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "7",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 25.0,
+   "frames_decoded": 3032,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "8",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "9",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1454,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "10",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1192,
+   "frames_emitted": 596,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.96
+  },
+  {
+   "id": "11",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "12",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "13",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "14",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "15",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1453,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "16",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1192,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "17",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "18",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "19",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 25.0,
+   "frames_decoded": 3032,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "20",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "21",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1453,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "22",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1191,
+   "frames_emitted": 596,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.96
+  },
+  {
+   "id": "23",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "24",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 2983,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "25",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "26",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "27",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1454,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "28",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1192,
+   "frames_emitted": 596,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.96
+  },
+  {
+   "id": "29",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "30",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3032,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "31",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 25.0,
+   "frames_decoded": 3032,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "32",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "33",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1454,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "34",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1191,
+   "frames_emitted": 596,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.96
+  },
+  {
+   "id": "35",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "36",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "37",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "38",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "39",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1454,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "40",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1192,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "41",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "42",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3033,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "43",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 25.0,
+   "frames_decoded": 3032,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  },
+  {
+   "id": "44",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1789,
+   "frames_emitted": 597,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.97
+  },
+  {
+   "id": "45",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 12.0,
+   "frames_decoded": 1454,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "46",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    1280,
+    720
+   ],
+   "declared_fps": null,
+   "measured_fps": 9.81,
+   "frames_decoded": 1192,
+   "frames_emitted": 596,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 4.96
+  },
+  {
+   "id": "47",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h264",
+   "size": [
+    960,
+    540
+   ],
+   "declared_fps": null,
+   "measured_fps": 15.0,
+   "frames_decoded": 1818,
+   "frames_emitted": 606,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.05
+  },
+  {
+   "id": "48",
+   "state": "live",
+   "ever_live": true,
+   "codec": "h265",
+   "size": [
+    640,
+    360
+   ],
+   "declared_fps": null,
+   "measured_fps": 24.9,
+   "frames_decoded": 3032,
+   "frames_emitted": 607,
+   "reconnects": 0,
+   "discontinuities": 0,
+   "warnings": 0,
+   "warning_top": [],
+   "transport_logs": 0,
+   "transport_top": [],
+   "decode_errors": 0,
+   "callback_errors": 0,
+   "last_error": "",
+   "epoch": 1,
+   "emit_rate": 5.06
+  }
+ ],
+ "events": [
+  {
+   "t": 0.53,
+   "camera": "42",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.54,
+   "camera": "18",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.55,
+   "camera": "30",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.56,
+   "camera": "12",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.56,
+   "camera": "6",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.56,
+   "camera": "48",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.57,
+   "camera": "5",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.57,
+   "camera": "36",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.58,
+   "camera": "11",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.58,
+   "camera": "17",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.6,
+   "camera": "13",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.6,
+   "camera": "29",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.61,
+   "camera": "39",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.61,
+   "camera": "15",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.61,
+   "camera": "27",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "35",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "3",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "47",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "41",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "25",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "45",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "33",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "1",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "21",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.62,
+   "camera": "7",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.63,
+   "camera": "31",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.63,
+   "camera": "37",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.63,
+   "camera": "9",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.63,
+   "camera": "23",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.63,
+   "camera": "43",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 0.63,
+   "camera": "19",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.43,
+   "camera": "24",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.94,
+   "camera": "14",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.94,
+   "camera": "26",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.94,
+   "camera": "38",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.94,
+   "camera": "2",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.95,
+   "camera": "8",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.95,
+   "camera": "32",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.95,
+   "camera": "44",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 1.96,
+   "camera": "20",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.51,
+   "camera": "4",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.51,
+   "camera": "16",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.51,
+   "camera": "28",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.51,
+   "camera": "40",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.52,
+   "camera": "10",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.52,
+   "camera": "34",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.52,
+   "camera": "46",
+   "epoch": 1,
+   "reason": "connect"
+  },
+  {
+   "t": 2.52,
+   "camera": "22",
+   "epoch": 1,
+   "reason": "connect"
+  }
+ ],
+ "samples": [
+  {
+   "t": 10.0,
+   "cpu_pct": 191.7,
+   "rss_mb": 574.4,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 20.0,
+   "cpu_pct": 174.3,
+   "rss_mb": 555.0,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 30.1,
+   "cpu_pct": 166.3,
+   "rss_mb": 559.2,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 40.1,
+   "cpu_pct": 168.0,
+   "rss_mb": 562.9,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 50.2,
+   "cpu_pct": 169.1,
+   "rss_mb": 551.1,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 60.2,
+   "cpu_pct": 169.8,
+   "rss_mb": 573.3,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 70.2,
+   "cpu_pct": 168.9,
+   "rss_mb": 550.8,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 80.3,
+   "cpu_pct": 168.8,
+   "rss_mb": 566.5,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 90.3,
+   "cpu_pct": 171.1,
+   "rss_mb": 556.1,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 100.3,
+   "cpu_pct": 170.9,
+   "rss_mb": 556.5,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 110.4,
+   "cpu_pct": 166.8,
+   "rss_mb": 566.8,
+   "live": 48,
+   "running": 48
+  },
+  {
+   "t": 120.0,
+   "cpu_pct": 159.5,
+   "rss_mb": 556.4,
+   "live": 48,
+   "running": 48
+  }
+ ]
+}

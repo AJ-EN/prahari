@@ -117,8 +117,10 @@ and a location, or import a CSV.
 ## How many cameras can one laptop handle?
 
 Measured on an Apple M1 laptop with 8 GB of RAM:
-- Keeping 48 cameras connected: about half of one CPU core and ~370 MB of RAM (keyframes mode).
-- Reading plates: ~15–25 ms per frame, so roughly **40 cameras at one frame per second** on one machine.
+- Keeping 48 cameras connected: all 48 live, zero reconnects, about half of one CPU core and ~400 MB of RAM
+  (keyframes mode); ~1.7 cores and ~560 MB decoding every frame. Raw logs: `docs/hld/evidence/`.
+- Reading plates: ~15–25 ms per frame. **Plan on ~14 cameras at one frame per second per laptop-class machine**
+  (the raw measurement allows ~40; we derate ×2 for real footage and keep 40% headroom).
 
 If a laptop struggles, set in `prahari.env`: `MAX_CAMERAS=20`, or `TARGET_FPS=1`, or `CAPTURE_MODE=keyframes`.
 With an NVIDIA GPU: `pip install onnxruntime-gpu` (instead of `onnxruntime`); it is used automatically.

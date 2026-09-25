@@ -247,7 +247,7 @@ async function loadGaps() {
     tile("No location", num(t.without_location), t.without_location > 0),
     tile("No stream link", num(t.without_stream_url), t.without_stream_url > 0));
   const explain = h("p", { class: "small muted" },
-    `The area around the cameras is split into ${num(cov.cells)} cells of ${cov.cell_km ?? 1} km. A cell is covered if a camera is within ${cov.radius_km ?? 1} km. ` +
+    `The area around the cameras is split into ${num(cov.cells)} ${cov.cells === 1 ? "cell" : "cells"} of ${cov.cell_km ?? 1} km. A cell is covered if a camera is within ${cov.radius_km ?? 1} km. ` +
     `${num(cov.uncovered)} cells have no camera nearby. Generated ${r.generated_at ? r.generated_at.replace("T", " ").slice(0, 19) : "now"} IST.`);
 
   const depts = Object.entries(r.by_department || {});
