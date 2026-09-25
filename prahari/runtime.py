@@ -30,6 +30,7 @@ import cv2
 
 from prahari.common import diskguard
 from prahari.common.contracts import CameraInfo, FrameSample, PlateEvent
+from prahari.node.access import strip_credentials
 from prahari.node.capture import CaptureConfig
 from prahari.node.manager import NodeManager
 from prahari.registry import cameras as cam_mod
@@ -49,8 +50,8 @@ OVERLAY_MAX_AGE_S = 1.5      # show the analysed frame (with its boxes) if this 
 def camera_row(c: CameraInfo) -> dict:
     return {"id": c.id, "name": c.name or f"Camera {c.id}", "department": c.department,
             "lat": c.lat, "lon": c.lon, "codec": c.codec, "width": c.width, "height": c.height,
-            "fps": c.fps, "live": c.live, "rtsp_url": c.rtsp_url, "hls_url": c.hls_url,
-            "whep_url": c.whep_url}
+            "fps": c.fps, "live": c.live, "rtsp_url": strip_credentials(c.rtsp_url),
+            "hls_url": strip_credentials(c.hls_url), "whep_url": strip_credentials(c.whep_url)}
 
 
 class Runtime:

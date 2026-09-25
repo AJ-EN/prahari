@@ -120,13 +120,22 @@ def check_cameras() -> None:
         say(FAIL, "No prahari.env file yet",
             "Copy prahari.env.example to prahari.env and put the catalogue URL on INGEST_URL=")
         return
-    if not s.ingest_url or "REPLACE-WITH-HOST" in s.ingest_url:
+    if not s.ingest_url or "REPLACE" in s.ingest_url:
         say(FAIL, "INGEST_URL is not set in prahari.env",
-            "Paste the portal's catalogue URL, e.g. INGEST_URL=http://<host>/api/ingest")
+            "Set it to the camera list: a saved cameras.json file, or its URL")
         return
-    from prahari.node.catalogue import fetch_catalogue
+    from prahari.node import access
+    from prahari.node.catalogue import CatalogueAuthError, fetch_catalogue
     try:
         cams = fetch_catalogue(s.ingest_url)
+    except CatalogueAuthError as e:
+        say(FAIL, "The camera list needs a login", str(e))
+        return
+    except FileNotFoundError:
+        say(FAIL, f"Camera list file not found: {s.ingest_url}",
+            "Save cameras.json from your logged-in browser into the PRAHARI folder, "
+            "and put its file name on INGEST_URL=")
+        return
     except Exception as e:
         say(FAIL, f"Can't read the catalogue at {s.ingest_url}: {type(e).__name__}: {e}",
             "Open that URL in a browser on this computer. If it asks for login, set "
@@ -148,6 +157,14 @@ def check_cameras() -> None:
         print(f"      e.g. id={c.id!r} name={c.name!r} codec={c.codec or '?'} "
               f"url={(c.rtsp_url or c.hls_url)[:60]}")
 
+    user, pw = access.credentials()
+    if any(c.rtsp_url for c in cams) and not (user and pw):
+        say(FAIL, "No stream login set, but the Sentinel grid requires one",
+            "Set STREAM_USER (the registered email) and STREAM_PASSWORD (the access "
+            "password) in prahari.env")
+    elif user:
+        say(OK, f"Stream login set for {user} (password hidden)")
+
     import av
     tried = 0
     for c in live:
@@ -156,9 +173,10 @@ def check_cameras() -> None:
             continue
         tried += 1
         opts = {"rtsp_transport": "tcp"} if url.startswith("rtsp") else {}
+        opts.update(access.ffmpeg_options_for(url))
         t0 = time.time()
         try:
-            with av.open(url, options=opts, timeout=(10, 10)) as ct:
+            with av.open(access.with_credentials(url), options=opts, timeout=(10, 10)) as ct:
                 v = ct.streams.video[0]
                 n, first, last = 0, None, None
                 for fr in ct.decode(v):
@@ -173,9 +191,13 @@ def check_cameras() -> None:
                 say(OK, f"Camera {c.id}: opened, {v.codec_context.name} "
                         f"{v.codec_context.width}x{v.codec_context.height}, ~{fps:.1f} fps measured")
         except Exception as e:
-            say(FAIL, f"Camera {c.id}: could not open the stream: {type(e).__name__}: {e}",
-                "Port 8554 may be blocked on this network — try another network, or ask the "
-                "organisers. PRAHARI forces RTSP over TCP, as their guide requires.")
+            msg = access.strip_credentials(str(e)).replace(pw, "***") if pw else str(e)
+            unauthorised = "401" in msg or "nauthori" in msg
+            say(FAIL, f"Camera {c.id}: could not open the stream: {type(e).__name__}: {msg}",
+                "The grid refused the login: check STREAM_USER / STREAM_PASSWORD, and that this "
+                "email is on the approved access list." if unauthorised else
+                "Port 8554 may be blocked on this network — try another network (e.g. a phone "
+                "hotspot), or ask the organisers. PRAHARI forces RTSP over TCP, as required.")
 
 
 def main() -> int:

@@ -91,11 +91,15 @@ def serve(settings, *, extra_lines: list[str] | None = None, before_stop=None) -
 def cmd_start() -> None:
     from prahari.settings import ENV_FILE, Settings
     s = Settings.load()
-    if not s.ingest_url or "REPLACE-WITH-HOST" in s.ingest_url:
-        where = ENV_FILE if ENV_FILE.exists() else "prahari.env (copy it from prahari.env.example)"
-        sys.exit(f"\nNo camera link yet.\n  Put the portal's catalogue URL in {where}:\n"
-                 f"      INGEST_URL=http://<host>/api/ingest\n"
+    where = ENV_FILE if ENV_FILE.exists() else "prahari.env (copy it from prahari.env.example)"
+    if not s.ingest_url or "REPLACE" in s.ingest_url:
+        sys.exit(f"\nNo camera list set yet. Set INGEST_URL in {where}.\n"
                  f"  Or try practice mode first:  python run.py demo\n")
+    if "://" not in s.ingest_url and not Path(s.ingest_url).exists():
+        sys.exit(f"\nCamera list file not found: {s.ingest_url}\n"
+                 f"  Open https://cctv.corp8.cloud/cameras.json in your logged-in browser,\n"
+                 f"  save it into the PRAHARI folder under that name, then run again.\n"
+                 f"  Check everything first with:  python run.py doctor\n")
     serve(s)
 
 

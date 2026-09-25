@@ -37,8 +37,12 @@ def _bool(v: str) -> bool:
 
 @dataclass
 class Settings:
-    ingest_url: str = ""
-    ingest_token: str = ""
+    ingest_url: str = ""            # catalogue: URL, or a saved JSON file (path)
+    ingest_token: str = field(default="", repr=False)
+    stream_user: str = ""           # Sentinel grid: registered email (RTSP/WebRTC login)
+    stream_password: str = field(default="", repr=False)   # never stored or printed by PRAHARI
+    ingest_cookie: str = field(default="", repr=False)     # optional session cookie for cameras.json / HLS
+    rtsp_template: str = ""         # optional, e.g. rtsp://103.250.160.189:8554/stream/{id}
     host: str = "127.0.0.1"
     port: int = 8000
     db: str = ""                    # empty -> data/prahari.db
@@ -76,6 +80,9 @@ class Settings:
                 setattr(s, k, float(v))
             else:
                 setattr(s, k, v)
+        # A catalogue saved as a file may be given relative to the PRAHARI folder.
+        if s.ingest_url and "://" not in s.ingest_url and not os.path.isabs(s.ingest_url):
+            s.ingest_url = str(ROOT / s.ingest_url)
         s.source = str(env_file) if env_file.exists() else "defaults (no prahari.env yet)"
         s.apply_to_environment()
         return s
@@ -84,6 +91,12 @@ class Settings:
         """Components read a few settings from the environment; set them once here."""
         if self.ingest_token:
             os.environ["PRAHARI_INGEST_TOKEN"] = self.ingest_token
+        for key, val in (("PRAHARI_STREAM_USER", self.stream_user),
+                         ("PRAHARI_STREAM_PASSWORD", self.stream_password),
+                         ("PRAHARI_INGEST_COOKIE", self.ingest_cookie),
+                         ("PRAHARI_RTSP_TEMPLATE", self.rtsp_template)):
+            if val:
+                os.environ[key] = val
         if self.db:
             os.environ["PRAHARI_DB"] = self.db
 

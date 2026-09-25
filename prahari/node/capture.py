@@ -37,6 +37,7 @@ from urllib.parse import urlsplit, urlunsplit
 import av
 import av.logging
 
+from prahari.node import access
 from prahari.common.contracts import CameraInfo, FrameSample
 
 log = logging.getLogger("prahari.node.capture")
@@ -204,7 +205,8 @@ class CameraWorker(threading.Thread):
         _ensure_libav_logging()
         self.camera = camera
         self.cfg = cfg or CaptureConfig()
-        self.url = url or camera.rtsp_url or camera.hls_url
+        # Always credential-free; access.with_credentials() adds them only when opening.
+        self.url = access.strip_credentials(url or camera.rtsp_url or camera.hls_url)
         self.on_sample = on_sample
         self.on_discontinuity = on_discontinuity
         self._stop_ev = threading.Event()
@@ -320,6 +322,7 @@ class CameraWorker(threading.Thread):
             self.state = s
 
     def _error(self, msg: str) -> None:
+        msg = access.scrub(msg)   # libav echoes the URL, password included
         with self._lock:
             self.last_error = msg[:300]
             self.last_error_at = time.time()
@@ -333,6 +336,7 @@ class CameraWorker(threading.Thread):
         }
         if not self.url.lower().startswith(("rtsp://", "rtsps://")):
             opts.pop("rtsp_transport")
+        opts.update(access.ffmpeg_options_for(self.url))   # session cookie for HLS
         if self.cfg.extra_options:
             opts.update({k: str(v) for k, v in self.cfg.extra_options.items()})
         return opts
@@ -342,6 +346,7 @@ class CameraWorker(threading.Thread):
             return
         with self._lock:
             for level, name, msg in logs:
+                msg = access.scrub(msg)
                 if level > av.logging.WARNING:
                     continue
                 key = msg.strip()[:60]
@@ -359,7 +364,7 @@ class CameraWorker(threading.Thread):
         container = None
         with av.logging.Capture(local=True) as logs:
             try:
-                container = av.open(self.url, options=self._options(),
+                container = av.open(access.with_credentials(self.url), options=self._options(),
                                     timeout=(self.cfg.open_timeout, self.cfg.read_timeout))
                 self._drain_logs(logs)
                 if not container.streams.video:

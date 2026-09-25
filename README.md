@@ -49,25 +49,35 @@ The practice videos loop every 40 seconds, so the same car passes again each loo
 "1, 5, 9" at the same camera. Practice mode uses its own database (`data/demo.db`), so it never mixes with real
 data. Stop with **Ctrl+C**.
 
-### 4. Paste in the real camera link
-Copy the settings file, then edit the first line:
+### 4. Connect to the real Sentinel grid
+The grid needs a login, so there are three things to set up.
 
+**a. Create your settings file.**
 ```bash
 cp prahari.env.example prahari.env
 ```
 (Windows: `copy prahari.env.example prahari.env`)
 
+**b. Save the camera list.** Log in to the Sentinel portal in your browser, then open
+**https://cctv.corp8.cloud/cameras.json**. Save that page as `sentinel-cameras.json` inside the PRAHARI
+folder (browser menu → *Save Page As…*, format "Page Source" or "Raw data").
+`prahari.env` already points at that file. If the organisers change the camera list, save it again.
+
+**c. Add the stream login** to `prahari.env`: the team's **registered email** and **access password**.
+Only emails on the organisers' approved list can connect.
 ```ini
-INGEST_URL=http://<host>/api/ingest
+STREAM_USER=you@example.com
+STREAM_PASSWORD=your-access-password
 ```
-`<host>` is on the Sentinel portal's **Resources** page after logging in (the `curl -s http://<host>/api/ingest` line).
-If the portal gives you a token, put it on `INGEST_TOKEN=`. Nothing else needs changing.
+Write the email normally; PRAHARI encodes the `@` itself. The password is used only when a camera connection
+opens. It is never saved to the database, shown on screen, or written to logs.
+**Never commit, upload or share `prahari.env`** (git already ignores it).
 
 ### 5. Check everything
 ```bash
 python run.py doctor
 ```
-It checks Python, packages, models, disk, database, the catalogue link, and opens two real camera streams.
+It checks Python, packages, models, disk, database, the camera list and your stream login, then opens two real camera streams.
 Every problem comes with a `→` line telling you how to fix it.
 
 ### 6. Run it
@@ -131,7 +141,9 @@ With an NVIDIA GPU: `pip install onnxruntime-gpu` (instead of `onnxruntime`); it
 
 | Problem | Fix |
 |---|---|
-| `No camera link yet` | Set `INGEST_URL=` in `prahari.env` (step 4) |
+| `No camera list set yet` / `Camera list file not found` | Step 4b: save `cameras.json` as `sentinel-cameras.json` in the PRAHARI folder |
+| Doctor: *the camera list needs a login* | You pointed `INGEST_URL` at the web address; save the file instead (step 4b) |
+| Doctor: *the grid refused the login* | Check `STREAM_USER` / `STREAM_PASSWORD`, and that the email is on the organisers' approved list |
 | Doctor: *can't read the catalogue* | Open the URL in a browser **on the same computer**. If that fails too, it's the network or VPN, not PRAHARI |
 | Doctor: *could not open the stream* | Port 8554 may be blocked on your network (office and college Wi-Fi often block it). Try another network, e.g. a phone hotspot |
 | `Missing Python package` | Activate the venv (step 2), then `pip install -r requirements.txt` |

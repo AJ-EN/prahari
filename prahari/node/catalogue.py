@@ -329,15 +329,62 @@ def auth_headers(token: str | None = None) -> dict[str, str]:
     return h
 
 
+class CatalogueAuthError(RuntimeError):
+    """The catalogue URL answered with a login page instead of JSON."""
+
+
+def _looks_like_login(r: httpx.Response) -> bool:
+    if any("/auth/login" in str(h.headers.get("location", "")) for h in r.history):
+        return True
+    if "/auth/login" in r.url.path or "/login" in r.url.path:
+        return True
+    ctype = r.headers.get("content-type", "").lower()
+    return "html" in ctype
+
+
+def sanitise(cams: list[CameraInfo]) -> list[CameraInfo]:
+    """Make catalogue URLs safe to store and display: strip any embedded
+    credentials, and fill a missing RTSP URL from PRAHARI_RTSP_TEMPLATE."""
+    from prahari.node import access
+    for c in cams:
+        c.rtsp_url = access.strip_credentials(c.rtsp_url) or access.rtsp_from_template(c.id)
+        c.hls_url = access.strip_credentials(c.hls_url)
+        c.whep_url = access.strip_credentials(c.whep_url)
+    return cams
+
+
+def _local_path(url: str) -> str | None:
+    """A catalogue given as a saved file: a plain path, or file://."""
+    if url.startswith("file://"):
+        from urllib.parse import unquote
+        return unquote(urlparse(url).path)
+    if "://" not in url:
+        return os.path.expanduser(url)
+    return None
+
+
 def fetch_catalogue(url: str, token: str | None = None, timeout: float = 10.0,
                     client: httpx.Client | None = None) -> list[CameraInfo]:
-    """GET the catalogue and parse it. Raises on HTTP / network / JSON errors so the
-    caller can decide to keep its current camera set."""
-    headers = auth_headers(token)
+    """Read the catalogue and parse it. `url` may be an http(s) URL or a saved
+    JSON file (path or file://). Raises on HTTP / network / JSON errors so the
+    caller can keep its current camera set; raises CatalogueAuthError, with a
+    fix in the message, when the server answers with its login page."""
+    from prahari.node import access
+    path = _local_path(url)
+    if path is not None:
+        with open(path, encoding="utf-8") as f:
+            return sanitise(parse_catalogue(json.load(f)))
+    headers = {**auth_headers(token), **access.http_headers()}
     if client is None:
         with httpx.Client(timeout=timeout, follow_redirects=True) as c:
             r = c.get(url, headers=headers)
     else:
         r = client.get(url, headers=headers, timeout=timeout)
+    if _looks_like_login(r):
+        raise CatalogueAuthError(
+            f"{access.strip_credentials(url)} asked for a login instead of returning the camera "
+            "list. Open it in your logged-in browser, save it as a file (e.g. "
+            "sentinel-cameras.json in the PRAHARI folder) and set INGEST_URL to that file; "
+            "or set INGEST_COOKIE to your browser session cookie.")
     r.raise_for_status()
-    return parse_catalogue(r.json())
+    return sanitise(parse_catalogue(r.json()))

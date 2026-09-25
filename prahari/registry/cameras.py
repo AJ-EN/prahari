@@ -11,6 +11,8 @@ verbatim in `raw`, so nothing the catalogue said is ever lost.
 """
 from __future__ import annotations
 
+from prahari.node.access import strip_credentials
+
 import csv
 import hashlib
 import io
@@ -357,6 +359,8 @@ def upsert(store: Store, cams: list[dict], *, source: str,
         for cam in cams:
             prior = c.execute("SELECT * FROM cameras WHERE id = ?", (cam["id"],)).fetchone()
             vals = {f: cam.get(f) for f in _FIELDS}
+            for f in ("rtsp_url", "hls_url", "whep_url"):   # never store credentials
+                vals[f] = strip_credentials(vals[f]) if vals[f] else vals[f]
             vals["live"] = int(bool(vals["live"] if vals["live"] is not None else True))
             for f in ("name", "department", "codec", "rtsp_url", "hls_url", "whep_url"):
                 vals[f] = vals[f] or ""
