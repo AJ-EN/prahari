@@ -350,36 +350,110 @@ code {
   line-height: 1.4;
 }
 
-/* Print Styling for PDF Export */
+/* Print Styling for 16:9 Widescreen PDF Export */
+@page {
+  size: 16in 9in;
+  margin: 0;
+}
 @media print {
-  body { overflow: visible; height: auto; background: #fff; color: #000; }
-  .bg-grid, .nav-bar, .notes-drawer { display: none !important; }
-  #presentation { display: block; width: 100%; height: auto; }
+  html, body {
+    width: 16in !important;
+    height: 9in !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #070d18 !important;
+    color: #f8fafc !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    overflow: visible !important;
+  }
+  .bg-grid, .nav-bar, .notes-drawer {
+    display: none !important;
+  }
+  #presentation {
+    display: block !important;
+    width: 16in !important;
+    height: auto !important;
+  }
   .slide {
     display: flex !important;
     opacity: 1 !important;
     transform: none !important;
-    page-break-after: always;
-    break-after: page;
-    position: relative;
-    width: 100%;
-    height: 98vh;
-    margin: 0;
-    padding: 20mm;
-    background: #fff;
-    color: #111;
-    border: none;
-    box-shadow: none;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    position: relative !important;
+    width: 16in !important;
+    height: 9in !important;
+    max-width: 16in !important;
+    margin: 0 !important;
+    padding: 0.55in 0.85in !important;
+    background: #0a1128 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
   }
-  .slide-header { border-bottom: 2pt solid #1e3a8a; }
-  .slide-header h2 { color: #1e3a8a; }
-  .card { background: #f8fafc; border: 1px solid #cbd5e1; color: #111; }
-  .card h3 { color: #1e3a8a; }
-  .card p, .card li { color: #334155; }
-  .metric-box { background: #e0f2fe; border-color: #0284c7; }
-  .metric-box .number { color: #0369a1; }
-  table.data-table { background: #fff; }
-  table.data-table th { background: #0f172a; color: #fff; }
+  .slide-header {
+    border-bottom: 2px solid rgba(245, 158, 11, 0.5) !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 20px !important;
+  }
+  .slide-header h2 {
+    color: #ffffff !important;
+    font-size: 2.2rem !important;
+  }
+  .card {
+    background: rgba(18, 28, 52, 0.95) !important;
+    border: 1px solid #283858 !important;
+    color: #f8fafc !important;
+  }
+  .card.highlight {
+    border: 1.5px solid #f59e0b !important;
+  }
+  .card h3 {
+    color: #fbbf24 !important;
+    font-size: 1.35rem !important;
+  }
+  .card p, .card li {
+    color: #cbd5e1 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+  }
+  .metric-box {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.7), rgba(15, 23, 42, 0.9)) !important;
+    border: 1.5px solid #f59e0b !important;
+  }
+  .metric-box .number {
+    color: #ffffff !important;
+  }
+  .metric-box .label {
+    color: #fbbf24 !important;
+  }
+  table.data-table {
+    background: rgba(15, 23, 42, 0.8) !important;
+    font-size: 1.02rem !important;
+  }
+  table.data-table th {
+    background: #1e3a8a !important;
+    color: #fbbf24 !important;
+    font-size: 0.95rem !important;
+  }
+  table.data-table td {
+    color: #f8fafc !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+  .title-slide h1 {
+    font-size: 4.8rem !important;
+    color: #ffffff !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+  }
+  .title-slide .subhead {
+    font-size: 1.65rem !important;
+    color: #cbd5e1 !important;
+  }
 }
 </style>
 </head>
