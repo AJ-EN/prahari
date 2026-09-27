@@ -66,7 +66,7 @@ class Runtime:
         self._stop = threading.Event()
         self._threads: list[threading.Thread] = []
         self._analysed: dict[str, tuple] = {}    # camera -> (FrameSample, [(bbox, text)])
-        self._snap_cache: dict[str, tuple] = {}  # camera -> ((epoch, pts), jpeg bytes)
+        self._snap_cache: dict[str, tuple] = {}  # camera -> ((epoch, pts, width), jpeg bytes)
         self._lock = threading.Lock()
         self.started_at = time.time()
         self.stats: dict[str, Any] = {
@@ -238,7 +238,9 @@ class Runtime:
         boxes: list = []
         if analysed and s.ts - analysed[0].ts <= OVERLAY_MAX_AGE_S:
             s, boxes = analysed
-        key = (s.epoch, s.pts_s)
+        # Width is part of the cache key: the still-image endpoint and the
+        # MJPEG player can ask for differently sized encodes of one frame.
+        key = (s.epoch, s.pts_s, max_width)
         cached = self._snap_cache.get(camera_id)
         if cached and cached[0] == key:
             return cached[1]
@@ -275,13 +277,39 @@ class Runtime:
 def attach(app, runtime: Runtime) -> None:
     """Add the live endpoints to the API, ahead of the console's catch-all mount."""
     from fastapi import HTTPException
-    from fastapi.responses import FileResponse, Response
+    from fastapi.responses import FileResponse, Response, StreamingResponse
+    import time
 
     def snapshot(camera_id: str):
         data = runtime.snapshot_jpeg(camera_id)
         if data is None:
             raise HTTPException(404, detail="no frame from this camera yet")
         return Response(data, media_type="image/jpeg", headers={"Cache-Control": "no-store"})
+
+    def live_mjpeg(camera_id: str):
+        """Continuously deliver the newest decoded frame as a browser-playable feed.
+
+        The node remains the only RTSP client; this endpoint deliberately never
+        exposes RTSP credentials to the browser.  It is also latest-frame-only,
+        so a slow viewer cannot build an unbounded queue.
+        """
+        if not runtime.manager or runtime.manager.latest(camera_id) is None:
+            raise HTTPException(404, detail="no frame from this camera yet")
+
+        def frames():
+            boundary = b"--prahari-frame\r\n"
+            while True:
+                data = runtime.snapshot_jpeg(camera_id, max_width=960)
+                if data:
+                    yield (boundary + b"Content-Type: image/jpeg\r\n"
+                           + f"Content-Length: {len(data)}\r\n\r\n".encode()
+                           + data + b"\r\n")
+                # 5 fps is deliberately bounded: this is an operator preview,
+                # while ANPR continues to use its own capture rate.
+                time.sleep(0.2)
+
+        return StreamingResponse(frames(), media_type="multipart/x-mixed-replace; boundary=prahari-frame",
+                                 headers={"Cache-Control": "no-store", "X-Accel-Buffering": "no"})
 
     def status():
         return runtime.status()
@@ -296,6 +324,8 @@ def attach(app, runtime: Runtime) -> None:
     before = len(app.router.routes)
     app.add_api_route("/api/cameras/{camera_id}/snapshot.jpg", snapshot, methods=["GET"],
                       tags=["live"], summary="Latest frame from a camera (JPEG, with plate boxes)")
+    app.add_api_route("/api/cameras/{camera_id}/live.mjpg", live_mjpeg, methods=["GET"],
+                      tags=["live"], summary="Live camera preview (MJPEG, with plate boxes)")
     app.add_api_route("/api/runtime", status, methods=["GET"], tags=["live"],
                       summary="Live status: cameras, plate reader, throughput, disk")
     app.add_api_route("/api/evidence/{camera_id}/{filename}", evidence, methods=["GET"],

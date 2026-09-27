@@ -7,6 +7,7 @@ let dlg = null;
 let timer = null;
 let currentUrl = null;
 let ctrl = null;
+let liveImg = null;
 
 function ensureDialog() {
   if (dlg) return dlg;
@@ -24,6 +25,9 @@ function stop() {
   ctrl = null;
   if (currentUrl) URL.revokeObjectURL(currentUrl);
   currentUrl = null;
+  // Closing the dialog must also close the long-running MJPEG request.
+  if (liveImg) liveImg.removeAttribute("src");
+  liveImg = null;
 }
 
 /** The plate-reading profile measured by the node, in plain words. */
@@ -63,9 +67,30 @@ export function openCamera(c, { onMap } = {}) {
   stop();
   const st = camState(c);
   const img = h("img", { alt: `Latest picture from ${c.name || c.id}`, hidden: true });
+  const live = h("img", {
+    alt: `Live feed from ${c.name || c.id}`,
+    hidden: true,
+    src: `/api/cameras/${encodeURIComponent(c.id)}/live.mjpg`,
+  });
   const ph = h("div", { class: "snap-ph" }, icon("camera"), h("span", { class: "ph-text" }, "Loading picture…"));
   const stamp = h("span", { class: "snap-stamp", hidden: true });
-  const frame = h("div", { class: `snap big st-${st.key}` }, img, ph, stamp);
+  const frame = h("div", { class: `snap big st-${st.key}` }, img, live, ph, stamp);
+  liveImg = live;
+  let livePlaying = false;
+  live.addEventListener("load", () => {
+    if (!d.open) return;
+    livePlaying = true;
+    live.hidden = false;
+    img.hidden = true;
+    ph.hidden = true;
+    stamp.hidden = false;
+    stamp.textContent = "Live preview";
+  });
+  live.addEventListener("error", () => {
+    // Leave snapshot polling active as a graceful fallback for proxies that
+    // do not allow multipart MJPEG responses.
+    live.hidden = true;
+  });
 
   const res = c.width && c.height ? `${c.width} × ${c.height}` : null;
   const details = kv([
@@ -92,13 +117,14 @@ export function openCamera(c, { onMap } = {}) {
       h("div", null, frame, actions),
       h("div", null, details,
         h("h3", null, "Stream links"),
-        h("p", { class: "muted small" }, "Copy into VLC or ffplay to watch the camera directly."),
+        h("p", { class: "muted small" }, "The preview above is live. Copy these into VLC or ffplay for the source stream."),
         copyField("RTSP", c.rtsp_url),
         copyField("HLS", c.hls_url),
         copyField("WebRTC (WHEP)", c.whep_url))));
 
   const tick = async () => {
     if (!d.open) return;
+    if (livePlaying) return;
     ctrl = new AbortController();
     const r = await fetchSnapshot(c.id, { signal: ctrl.signal });
     if (!d.open) { if (r.ok) URL.revokeObjectURL(r.url); return; }
