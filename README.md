@@ -12,27 +12,6 @@
 
 </div>
 
-## Screenshots
-
-> All data shown is **SAMPLE** data, fabricated for demonstration. It does not refer to real cases or people.
-
-<table>
-  <tr>
-    <td width="50%"><img src="docs/img/overview.png" alt="Overview dashboard"/><br/><sub><b>Overview</b>: camera health, plate reads, open alerts, system health</sub></td>
-    <td width="50%"><img src="docs/img/alerts.png" alt="Live alerts"/><br/><sub><b>Alerts</b>: confident matches vs. matches needing human review</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="docs/img/wall.png" alt="Camera wall"/><br/><sub><b>Wall</b>: every camera with live / stale / offline status</sub></td>
-    <td width="50%"><img src="docs/img/trace.png" alt="Trace a vehicle"/><br/><sub><b>Trace</b>: route search with mandatory purpose and case ID</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="docs/img/registry.png" alt="Camera registry"/><br/><sub><b>Registry</b>: all cameras from all departments in one list</sub></td>
-    <td width="50%"><img src="docs/img/watchlist.png" alt="Watchlist"/><br/><sub><b>Watchlist</b>: categorised entries with FIR and police station</sub></td>
-  </tr>
-</table>
-
----
-
 ## Overview
 
 Police control rooms watch hundreds of cameras but can only follow a vehicle by hand, camera by camera. **PRAHARI** turns the Sentinel camera grid into a searchable, alerting system:
