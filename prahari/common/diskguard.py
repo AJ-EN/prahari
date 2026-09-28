@@ -17,17 +17,30 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "data"
+IS_SERVERLESS = bool(os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
+DATA = Path("/tmp/data") if IS_SERVERLESS else (ROOT / "data")
 
-FLOOR_BYTES = int(os.environ.get("PRAHARI_DISK_FLOOR_MB", "3072")) * 1024 * 1024
-EVIDENCE_CAP_BYTES = int(os.environ.get("PRAHARI_EVIDENCE_CAP_MB", "300")) * 1024 * 1024
+FLOOR_BYTES = (
+    int(os.environ.get("PRAHARI_DISK_FLOOR_MB", "10")) * 1024 * 1024
+    if IS_SERVERLESS
+    else int(os.environ.get("PRAHARI_DISK_FLOOR_MB", "3072")) * 1024 * 1024
+)
+EVIDENCE_CAP_BYTES = (
+    int(os.environ.get("PRAHARI_EVIDENCE_CAP_MB", "50")) * 1024 * 1024
+    if IS_SERVERLESS
+    else int(os.environ.get("PRAHARI_EVIDENCE_CAP_MB", "300")) * 1024 * 1024
+)
 
 
-def free_bytes(path: Path = ROOT) -> int:
-    return shutil.disk_usage(path).free
+def free_bytes(path: Path | None = None) -> int:
+    target = path or (Path("/tmp") if IS_SERVERLESS else ROOT)
+    try:
+        return shutil.disk_usage(target).free
+    except Exception:
+        return 1024 * 1024 * 1024
 
 
-def can_write(path: Path = ROOT) -> bool:
+def can_write(path: Path | None = None) -> bool:
     """False when the volume is below the safety floor. Callers must skip the write."""
     return free_bytes(path) > FLOOR_BYTES
 

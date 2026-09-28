@@ -136,7 +136,11 @@ BEGIN SELECT RAISE(ABORT, 'audit_log is append-only'); END;
 
 def default_db_path() -> Path:
     env = os.environ.get("PRAHARI_DB")
-    return Path(env) if env else ROOT / "data" / "prahari.db"
+    if env:
+        return Path(env)
+    if os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+        return Path("/tmp/prahari.db")
+    return ROOT / "data" / "prahari.db"
 
 
 def now() -> float:
@@ -187,9 +191,17 @@ class Store:
     def __init__(self, path: str | Path | None = None):
         self.path = Path(path) if path else default_db_path()
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        is_new = not self.path.exists()
         with self.connect() as conn:
             conn.execute("PRAGMA journal_mode=WAL")
             conn.executescript(SCHEMA)
+        if (os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME")) and is_new:
+            try:
+                from prahari.registry.seed import seed_demo, seed_watchlist
+                seed_watchlist(self)
+                seed_demo(self)
+            except Exception:
+                pass
 
     def connect(self) -> sqlite3.Connection:
         conn = sqlite3.connect(self.path, timeout=10, isolation_level=None,
